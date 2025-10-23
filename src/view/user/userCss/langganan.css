@@ -13,25 +13,13 @@
 }
 
 .tautanNavigasi {
-    font-weight: 500;
+    font-weight: 800;
     color: #ffffff;
     margin: 0 15px;
+    word-spacing: 5px;
+    font-size: xx-large;
     transition: color 0.3s ease;
     position: relative;
-}
-
-.tautanNavigasi:hover {
-    color: #e50914;
-}
-
-.menuNav::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #e50914;
 }
 
 .gambarProfil {
@@ -45,38 +33,6 @@
 
 .gambarProfil:hover {
     border-color: #e50914;
-}
-
-.kotakPencarian {
-    max-width: 280px;
-    position: relative;
-}
-
-.inputPencarian {
-    background-color: #2d2d2d;
-    border: 1px solid #444;
-    color: white;
-    padding-left: 40px;
-}
-
-.inputPencarian:focus {
-    background-color: #2d2d2d;
-    border-color: #e50914;
-    color: white;
-    box-shadow: 0 0 0 0.2rem rgba(229, 9, 20, 0.25);
-}
-
-.inputPencarian::placeholder {
-    color: #aaa;
-}
-
-.ikonPencarian {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #aaa;
-    z-index: 10;
 }
 
 .menuDropdown {
@@ -120,6 +76,60 @@
     display: none !important;
 }
 
+.card {
+    margin: 2em;
+    border-radius: 5%;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.keterangan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4em;
+    background-color: rgb(210, 126, 30);
+    font-weight: 800;
+    color: white;
+    font-size: xx-large;
+}
+
+#isi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: auto;
+    min-height: 100dvh;
+    width: 100%;
+    border: 1px solid black;
+}
+
+#isi h1 {
+    margin-bottom: 1.5em;
+    color: #222;
+    font-weight: 700;
+}
+
+.paket {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tombolPaket {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (max-width: 991.98px) {
     .tautanNavigasi {
         margin: 5px 0;
@@ -133,5 +143,12 @@
 
     .menuDropdown {
         background-color: #1a1a1a;
+    }
+
+    .paket {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
 }

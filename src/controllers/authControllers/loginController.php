@@ -37,6 +37,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['email'] = $user['email'];
     $_SESSION['foto_profil'] = $user['foto_profil'];
     $_SESSION['id_user'] = $user['id_user'];
+    
+    $queryRole = $connect->prepare("SELECT id_role, id_user, role_user, expired_at FROM role WHERE id_user = ?");
+    $queryRole->bind_param("s", $user['id_user']);
+    $queryRole->execute();
+    $resultRole = $queryRole->get_result();
+    $user_role = $resultRole->fetch_assoc();
+    $_SESSION['id_role'] = $user_role['id_role'];
+    $_SESSION['role_user'] = $user_role['role_user'];
+    $_SESSION['role_expired'] = $user_role['expired_at'];
+
     header('Location: ?page=dashboardUser');
     exit;
 }

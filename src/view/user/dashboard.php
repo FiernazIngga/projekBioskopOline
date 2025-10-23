@@ -14,6 +14,7 @@ $nama = $_SESSION['nama'];
 $email = $_SESSION['email'];
 $foto = dirname($_SERVER['SCRIPT_NAME']) . '/src/uploads/poto_profil/' . $_SESSION['foto_profil'];
 $id = $_SESSION['id_user'];
+$role = $_SESSION['role_user'];
 
 ?> 
 
@@ -23,7 +24,7 @@ $id = $_SESSION['id_user'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplikasi Streaming</title>
+    <title>Home User</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="?page=dashboard">
@@ -74,9 +75,9 @@ $id = $_SESSION['id_user'];
                         <ul class="dropdown-menu dropdown-menu-end menuDropdown">
                             <li><span class="headerDropdown">AKUN ANDA</span></li>
                             <li><a class="dropdown-item itemDropdown" href="?page=profil">
-                                    <i class="fas fa-user me-2"></i> Profil Saya
+                                    <i class="fas fa-user me-2"></i> Profil (<?= $role; ?> Plan)
                                 </a></li>
-                            <li><a class="dropdown-item itemDropdown" href="#">
+                            <li><a class="dropdown-item itemDropdown" href="?page=langganan">
                                     <i class="fas fa-credit-card me-2"></i> Langganan
                                 </a></li>
                             <li>

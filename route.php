@@ -20,9 +20,9 @@ switch ($page) {
         include "src/view/auth/daftar.php";
         echo '<link rel="stylesheet" href="src/view/auth/authCss/daftar.css">';
         break;
-        case 'logout':
-            include "src/controllers/authControllers/logoutController.php";
-            break;
+    case 'logout':
+        include "src/controllers/authControllers/logoutController.php";
+        break;
             
     // Halaman User
     case 'dashboardUser':
@@ -45,6 +45,12 @@ switch ($page) {
         include "src/view/user/profile.php";
         echo '<link rel="stylesheet" href="src/view/user/userCss/profil.css">';
         echo '<script src="src/view/user/userJs/profil.js"></script>';
+        break;
+    case 'langganan':
+        include "src/controllers/userControllers/langgananController.php";
+        include "src/view/user/langganan.php";
+        echo '<link rel="stylesheet" href="src/view/user/userCss/langganan.css">';
+        echo '<script src="src/view/user/userJs/langganan.js"></script>';
         break;
 
     default:

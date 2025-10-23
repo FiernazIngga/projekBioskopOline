@@ -52,12 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $id_user = 'usr_' . uniqid() . '_' . date('Ymd');
     $foto_profile = 'default.png';
-    $queryInsert = $connect->prepare("
-        INSERT INTO users (id_user, nama, username, password, email, foto_profil)
-        VALUES (?, ?, ?, ?, ?, ?)
-    ");
+    $queryInsert = $connect->prepare("INSERT INTO users (id_user, nama, username, password, email, foto_profil) VALUES (?, ?, ?, ?, ?, ?)");
     $queryInsert->bind_param("ssssss", $id_user, $nama, $username, $password, $email, $foto_profile);
-    if ($queryInsert->execute()) {
+    
+    $queryRole = $connect->prepare("INSERT INTO role (id_user) VALUE (?)");
+    $queryRole->bind_param("s", $id_user);
+    if ($queryInsert->execute() && $queryRole->execute()) {
         $_SESSION['success'] = true;
     } else {
         $_SESSION['error'] = ['Terjadi kesalahan saat menyimpan data: ' . $connect->error];
