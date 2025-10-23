@@ -1,0 +1,43 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+include __DIR__ . "/../../databases/koneksi.php";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $errors = [];
+    if (empty($username) || empty($password)) {
+        $errors[] = 'Username dan password harus diisi';
+    }
+    if (!empty($error)) {
+        $_SESSION['error'] = $error;
+        header('Location: ?page=login');
+        exit;
+    }
+    $query = $connect->prepare("SELECT id_user, username, password, nama, email, foto_profil FROM users WHERE username = ?");
+    $query->bind_param("s", $username);
+    $query->execute();
+    $result = $query->get_result();
+    if ($result->num_rows === 0) {
+        $_SESSION['error'] = ['Username tidak ditemukan'];
+        header('Location: ?page=login');
+        exit;
+    }
+    $user = $result->fetch_assoc();
+    if ($password !== $user['password']) {
+        $_SESSION['error'] = ['Password salah'];
+        header('Location: ?page=login');
+        exit;
+    }
+    $_SESSION['username'] = $user['username'];
+    $_SESSION['nama'] = $user['nama'];
+    $_SESSION['email'] = $user['email'];
+    $_SESSION['foto_profil'] = $user['foto_profil'];
+    $_SESSION['id_user'] = $user['id_user'];
+    header('Location: ?page=dashboardUser');
+    exit;
+}
+?>
