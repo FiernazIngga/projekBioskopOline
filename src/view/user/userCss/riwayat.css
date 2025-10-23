@@ -113,7 +113,10 @@
     box-shadow: 0 0 0 0.2rem rgba(229, 9, 20, 0.25);
 }
 
-/* Responsif */
+.no-arrow::after {
+    display: none !important;
+} 
+
 @media (max-width: 991.98px) {
     .tautanNavigasi {
         margin: 5px 0;

@@ -16,7 +16,13 @@
                 session_start();
             }
             if (isset($_SESSION['error'])) {
-                echo "<div class='pesanError'>" . $_SESSION['error'] . "</div>";
+                if (is_array($_SESSION['error'])) {
+                    foreach ($_SESSION['error'] as $err) {
+                        echo "<div class='pesanError'>$err</div>";
+                    }
+                } else {
+                    echo "<div class='pesanError'>{$_SESSION['error']}</div>";
+                }
                 unset($_SESSION['error']);
             }
         ?>
