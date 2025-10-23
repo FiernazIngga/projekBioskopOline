@@ -1,3 +1,19 @@
+<?php 
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($_SESSION['username'])) {
+    header('Location: ?page=login');
+    exit;
+}
+
+$nama = $_SESSION['nama'];
+$username = $_SESSION['username'];
+
+?> 
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -65,7 +81,7 @@
                             <li>
                                 <hr class="pemisahDropdown">
                             </li>
-                            <li><a class="dropdown-item itemDropdown" href="#">
+                            <li><a class="dropdown-item itemDropdown" href="?page=logout" onclick="return confirm('Apakah kamu yakin ingin logout?');">
                                     <i class="fas fa-sign-out-alt me-2"></i> Keluar
                                 </a></li>
                         </ul>

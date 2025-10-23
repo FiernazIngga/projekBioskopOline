@@ -34,6 +34,7 @@ switch ($page) {
         include "src/view/user/tandai.php";
         echo '<link rel="stylesheet" href="src/view/user/userCss/tandai.css">';
         echo '<script src="src/view/user/userJs/tandai.js"></script>';
+        break;
     case 'riwayat':
         include "src/view/user/riwayat.php";
         echo '<link rel="stylesheet" href="src/view/user/userCss/riwayat.css">';
