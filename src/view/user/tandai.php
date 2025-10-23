@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark wadahNavbar">
         <div class="container">
-            <a class="navbar-brand logoAplikasi" href="#">
+            <a class="navbar-brand logoAplikasi" href="?page=dashboardUser">
                 <i class="fas fa-play-circle me-2"></i>MovieUPN
             </a>
             <button class="navbar-toggler tombolToggle" type="button" data-bs-toggle="collapse"
@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="menuUtama">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link tautanNavigasi" href="#">
+                        <a class="nav-link tautanNavigasi" href="?page=dashboardUser">
                             <i class="fas fa-home me-1"></i> Beranda
                         </a>
                     </li>
@@ -33,12 +33,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link tautanNavigasi menuNav" href="#">
+                        <a class="nav-link tautanNavigasi menuNav" href="?page=tandai">
                             <i class="fas fa-bookmark me-1"></i> Tandai
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link tautanNavigasi" href="#">
+                        <a class="nav-link tautanNavigasi" href="?page=riwayat">
                             <i class="fas fa-history me-1"></i> Riwayat
                         </a>
                     </li>
