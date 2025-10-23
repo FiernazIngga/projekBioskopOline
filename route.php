@@ -24,11 +24,21 @@ switch ($page) {
         include "src/controllers/authControllers/logoutController.php";
         break;
         
-        // Halaman User
-        case 'dashboardUser':
-            include "src/view/user/dashboard.php";
-            echo '<link rel="stylesheet" href="src/view/auth/authCss/daftar.css">';
-            break;
+    // Halaman User
+    case 'dashboardUser':
+        include "src/view/user/dashboard.php";
+        echo '<link rel="stylesheet" href="src/view/user/userCss/dashboard.css">';
+        echo '<script src="src/view/user/userJs/dashboard.js"></script>';
+        break;
+    case 'tandai':
+        include "src/view/user/tandai.php";
+        echo '<link rel="stylesheet" href="src/view/user/userCss/tandai.css">';
+        echo '<script src="src/view/user/userJs/tandai.js"></script>';
+    case 'riwayat':
+        include "src/view/user/riwayat.php";
+        echo '<link rel="stylesheet" href="src/view/user/userCss/riwayat.css">';
+        echo '<script src="src/view/user/userJs/riwayat.js"></script>';
+        break;
 
     default:
         echo "<h2>Halaman tidak ditemukan</h2>";
