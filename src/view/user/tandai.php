@@ -9,8 +9,11 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 
-$nama = $_SESSION['nama'];
 $username = $_SESSION['username'];
+$nama = $_SESSION['nama'];
+$email = $_SESSION['email'];
+$foto = dirname($_SERVER['SCRIPT_NAME']) . '/src/uploads/poto_profil/' . $_SESSION['foto_profil'];
+$id = $_SESSION['id_user'];
 
 ?> 
 
@@ -21,7 +24,7 @@ $username = $_SESSION['username'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplikasi Streaming</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="?page=tandai">
 </head>
@@ -60,14 +63,12 @@ $username = $_SESSION['username'];
                         <input type="text" class="form-control inputPencarian" placeholder="Cari film atau serial...">
                     </div>
                     <div class="dropdown">
-                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
-                                alt="Profil" class="gambarProfil">
+                        <a class="dropdown-toggle no-arrow" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="<?= $foto; ?>" alt="Profil" class="gambarProfil">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end menuDropdown">
                             <li><span class="headerDropdown">AKUN ANDA</span></li>
-                            <li><a class="dropdown-item itemDropdown" href="#">
+                            <li><a class="dropdown-item itemDropdown" href="?page=profil">
                                     <i class="fas fa-user me-2"></i> Profil Saya
                                 </a></li>
                             <li><a class="dropdown-item itemDropdown" href="#">
@@ -86,7 +87,7 @@ $username = $_SESSION['username'];
         </div>
     </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
     <script src="?page=tandai"></script>
 </body>
