@@ -1,16 +1,25 @@
-.selamatdatang{
-    background-color: rgba(0, 0, 0, 0.377);
-    background-image:url('https://curupekspress.disway.id/upload/93ea1c090d9a8c9c901f301222e625a0.jpg');
+.selamatdatang {
+    background-image: url('https://curupekspress.disway.id/upload/93ea1c090d9a8c9c901f301222e625a0.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: local;
     background-position: center;
-    background-blend-mode: darken;
-    background-color: rgba(0, 0, 0, 0.4);
-    height:100dvh;
-    
-}
-.TulisanCenter{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.403);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    background-blend-mode: darken;
+
+}
+
+
+
+.tranding {
+    color: #ffffff;
+    background-color: #1a1a1a;
 }
 
 .wadahNavbar {
