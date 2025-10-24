@@ -88,7 +88,7 @@ $id = $_SESSION['id_user'];
                         <span>❌ Kustomisasi player</span>
                     </p>
                     <div class="tombolPaket">
-                        <button onclick="langganan('role')" class="btn btn-primary">Langganan</button>
+                        <button onclick="langganan('basic', '<?= $_SESSION['id_user']; ?>')" class="btn btn-primary">Langganan</button>
                     </div>
                 </div>
             </div>
@@ -102,7 +102,7 @@ $id = $_SESSION['id_user'];
                         <span>✅ Kustomisasi player</span>
                     </p>
                     <div class="tombolPaket">
-                        <button onclick="langganan('role')" class="btn btn-primary">Langganan</button>
+                        <button onclick="langganan('premium', '<?= $_SESSION['id_user']; ?>')" class="btn btn-primary">Langganan</button>
                     </div>
                 </div>
             </div>

@@ -52,6 +52,12 @@ switch ($page) {
         echo '<link rel="stylesheet" href="src/view/user/userCss/langganan.css">';
         echo '<script src="src/view/user/userJs/langganan.js"></script>';
         break;
+    case 'bayar':
+        include "src/controllers/userControllers/bayarController.php";
+        include "src/view/user/bayar.php";
+        echo '<link rel="stylesheet" href="src/view/user/userCss/bayar.css">';
+        echo '<script src="src/view/user/userJs/bayar.js"></script>';
+        break;
 
     default:
         echo "<h2>Halaman tidak ditemukan</h2>";
