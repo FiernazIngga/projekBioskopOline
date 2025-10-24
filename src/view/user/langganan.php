@@ -44,7 +44,7 @@ $id = $_SESSION['id_user'];
             <div class="collapse navbar-collapse" id="menuUtama">
                 <div class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <h1 class="nav-link tautanNavigasi"> Paket Langganan </h1>
+                        <h1 class="tautanNavigasi"> Paket Langganan </h1>
                     </li>
                 </div>
                 <div class="d-flex align-items-center">

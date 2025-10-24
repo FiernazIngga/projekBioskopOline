@@ -1,56 +1,45 @@
-<?php 
-
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-
+<?php
+    session_start();
     if (!isset($_SESSION['username'])) {
         header('Location: ?page=login');
         exit;
     }
-    include __DIR__ . "/../../databases/koneksi.php";
 
-    
-    $role = "";
-    $harga = 0;
-    $id_user = $_GET['root'];
-    if ($_GET['paket'] === "basic") {
-        $role = "Basic";
-        $harga = 100000;
-    } else {
-        $role = "Premium";
-        $harga = 200000;
-    }
+    include __DIR__ . "/../../databases/koneksi.php";
+    include __DIR__ . "/../../controllers/userControllers/bayarController.php";
+
+    $id_user = $_GET['root'] ?? null;
+    $role = $_GET['paket'];
+    $roleTitle = ($_GET['paket'] === "basic") ? "Basic" : "Premium";
+    $harga = ($role === "Basic") ? 100000 : 200000;
+
     $error = "";
     $catatan = "";
-    $succes = true;
-    $id_user = $_GET['root'];
-
-    function cekDanMasukan() {
-
-    }
+    $succes = null;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $nominalUang = $_POST['nominalUang'];
-        $passwordUser = $_POST['passwordUser'];
+        $nominalUang = $_POST['nominalUang'] ?? 0;
+        $passwordUser = $_POST['passwordUser'] ?? "";
+
         if ($passwordUser !== $_SESSION['password']) {
             $succes = false;
             $error = "Password yang anda masukkan tidak sama";
         } else {
             if ($nominalUang === $harga) {
-                $succes = true;
-                $catatan = "Berhasil berlangganan";
-                cekDanMasukan();
-            } else if ($nominalUang < $harga) {
+                $result = cekDanMasukan(true, $role, 0);
+            } elseif ($nominalUang < $harga) {
                 $succes = false;
-                $error = "Uang anda kurang Rp. " . $harga - $nominalUang;
-            } else if ($nominalUang > $harga) {
-                cekDanMasukan();
-                $succes = true;
-                $catatan = "Berhasil berlangganan sisa kembalian anda Rp. " . $nominalUang - $harga;
+                $error = "Uang anda kurang Rp. " . ($harga - $nominalUang);
+            } else { 
+                $result = cekDanMasukan(false, $role, $nominalUang - $harga);
+            }
+
+            if (isset($result)) {
+                $succes = $result->sukses;
+                $catatan = $result->catatan;
             }
         }
-    } 
+    }
 ?>
 
 <!DOCTYPE html>
@@ -65,10 +54,13 @@
 <body>
     <section id="bayar">
         <form method="post" action="?page=bayar&paket=<?= urlencode($role); ?>&root=<?= urlencode($id_user); ?>">
-            <?php if (!$succes) : ?>
+            <?php if (!$succes && $error) : ?>
                 <div class="alert alert-danger"><?= $error; ?></div>
-            <?php else: ?>
-                <div class="alert alert-success"><?= $catatan; ?></div>
+            <?php elseif($succes && $catatan): ?>
+                <script>
+                    alert(`<?= $catatan; ?>`);
+                    window.location.href = "?page=langganan";
+                </script>
             <?php endif; ?>
             <h1>Paket : <?= $role; ?></h1>
             <div class="mb-3">
