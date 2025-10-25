@@ -14,16 +14,17 @@
     background-blend-mode: darken;
 
 }
-
-
-
+.sikil{
+    background-color: black;
+    color: white;
+}
 .tranding {
     color: #ffffff;
-    background-color: #1a1a1a;
+    background-color:black;
 }
 
 .wadahNavbar {
-    background-color: #1a1a1a;
+    background-color: #000000;
     padding: 12px 0;
 }
 
