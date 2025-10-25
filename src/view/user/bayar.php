@@ -11,11 +11,12 @@
     $id_user = $_GET['root'] ?? null;
     $role = $_GET['paket'];
     $roleTitle = ($_GET['paket'] === "basic") ? "Basic" : "Premium";
-    $harga = ($role === "Basic") ? 100000 : 200000;
+    $harga = ($role === "basic") ? 100000 : 200000;
 
     $error = "";
     $catatan = "";
     $succes = null;
+    $result = null;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nominalUang = $_POST['nominalUang'] ?? 0;
@@ -33,7 +34,6 @@
             } else { 
                 $result = cekDanMasukan(false, $role, $nominalUang - $harga);
             }
-
             if (isset($result)) {
                 $succes = $result->sukses;
                 $catatan = $result->catatan;
@@ -62,7 +62,7 @@
                     window.location.href = "?page=langganan";
                 </script>
             <?php endif; ?>
-            <h1>Paket : <?= $role; ?></h1>
+            <h1>Paket : <?= $roleTitle; ?></h1>
             <div class="mb-3">
                 <label for="nominalUang" class="form-label">Harga Paket</label>
                 <input type="number" class="form-control" name="nominalUang" id="nominalUang" aria-describedby="emailHelp" placeholder="Rp. <?= number_format($harga,0,',','.'); ?>" required>

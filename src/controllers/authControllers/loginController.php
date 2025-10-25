@@ -5,6 +5,18 @@ if (session_status() === PHP_SESSION_NONE) {
 
 include __DIR__ . "/../../databases/koneksi.php";
 
+function cekExpired($idUser) {
+    global $connect;
+    $cek = $connect->prepare("SELECT * FROM role WHERE id_user = ?");
+    $cek->execute([$idUser]);
+    $hasil = $cek->get_result();
+    $rolePengguna = $hasil->fetch_assoc();
+    if ($rolePengguna["role_user"] !== "Free" && $rolePengguna["expired_at"] && new DateTime($rolePengguna["expired_at"]) < new DateTime()) {
+        $update = $connect->prepare("UPDATE role SET role_user = 'Free', expired_at = NULL WHERE id_user = ?");
+        $update->execute([$idUser]);
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
@@ -38,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['password'] = $password;
     $_SESSION['foto_profil'] = $user['foto_profil'];
     $_SESSION['id_user'] = $user['id_user'];
+    cekExpired($user['id_user']);
     
     $queryRole = $connect->prepare("SELECT id_role, id_user, role_user, expired_at FROM role WHERE id_user = ?");
     $queryRole->bind_param("s", $user['id_user']);
@@ -46,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_role = $resultRole->fetch_assoc();
     $_SESSION['id_role'] = $user_role['id_role'];
     $_SESSION['role_user'] = $user_role['role_user'];
-    $_SESSION['role_expired'] = $user_role['expired_at'];
 
     header('Location: ?page=dashboardUser');
     exit;
