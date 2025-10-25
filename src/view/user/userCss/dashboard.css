@@ -1,11 +1,17 @@
 .wadahNavbar {
-    background-color: #1a1a1a;
+    background-color: #000000;
     padding: 12px 0;
     position: sticky;
     top: 0;
     z-index: 9999;
 }
 
+.carousel-item img {
+    height: 400px;              /* tinggi tetap */
+    width: 100%;                /* lebar penuh */
+    object-fit: cover;          /* crop sesuai ukuran */
+    object-position: top;
+}
 .logoAplikasi {
     font-weight: bold;
     color: #e50914;

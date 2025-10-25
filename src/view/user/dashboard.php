@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -16,7 +16,7 @@ $foto = dirname($_SERVER['SCRIPT_NAME']) . '/src/uploads/poto_profil/' . $_SESSI
 $id = $_SESSION['id_user'];
 $role = $_SESSION['role_user'];
 
-?> 
+?>
 
 <!DOCTYPE html>
 <html lang="id">
@@ -25,12 +25,14 @@ $role = $_SESSION['role_user'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home User</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="?page=dashboard">
 </head>
 
 <body>
+    <header>
     <nav class="navbar navbar-expand-lg navbar-dark wadahNavbar">
         <div class="container">
             <a class="navbar-brand logoAplikasi" href="?page=dashboardUser">
@@ -69,7 +71,8 @@ $role = $_SESSION['role_user'];
                         <input type="text" class="form-control inputPencarian" placeholder="Cari film atau serial...">
                     </div>
                     <div class="dropdown">
-                        <a class="dropdown-toggle no-arrow" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="dropdown-toggle no-arrow" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <img src="<?= $foto; ?>" alt="Profil" class="gambarProfil">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end menuDropdown">
@@ -83,7 +86,8 @@ $role = $_SESSION['role_user'];
                             <li>
                                 <hr class="pemisahDropdown">
                             </li>
-                            <li><a class="dropdown-item itemDropdown" href="?page=logout" onclick="return confirm('Apakah kamu yakin ingin logout?');">
+                            <li><a class="dropdown-item itemDropdown" href="?page=logout"
+                                    onclick="return confirm('Apakah kamu yakin ingin logout?');">
                                     <i class="fas fa-sign-out-alt me-2"></i> Keluar
                                 </a></li>
                         </ul>
@@ -92,9 +96,65 @@ $role = $_SESSION['role_user'];
             </div>
         </div>
     </nav>
+    </header>
+    
+    <section>
+        <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+            <div class="carousel-indicators"> <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0"
+                    class="" aria-label="Slide 1"></button> <button type="button" data-bs-target="#myCarousel"
+                    data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button> <button
+                    type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"
+                    class=""></button> </div>
+            <div class="carousel-inner">
+                <div class="carousel-item">
+                    <img src="https://i0.wp.com/2.bp.blogspot.com/-UQUJKUj3SIc/UYj6MV2tK0I/AAAAAAAAASc/x16Cc_TSZ-g/s1600/FF6%2BDurtch%2BPoster.jpg" class="d-block w-100" alt="Cars 3">
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Example headline.</h1>
+                            <p class="opacity-75">Some representative placeholder content for the first slide of the
+                                carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item active"> 
+                    <img src="https://deras.id/wp-content/uploads/2023/04/desktop-cropped-v2.jpg" class="d-block w-100" alt="Cars 3">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Another example headline.</h1>
+                            <p>Some representative placeholder content for the second slide of the carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.squarespace-cdn.com/content/v1/57d4cbcb9f7456b185ce057b/1508820292576-QZ5YO8C2JPEZ6M8K1YQO/C3_banner.jpg" class="d-block w-100" alt="Cars 3">
+                    <div class="container">
+                        <div class="carousel-caption text-end">
+                            <h1>One more for good measure.</h1>
+                            <p>Some representative placeholder content for the third slide of this carousel.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div> <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
+                data-bs-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+                    class="visually-hidden">Previous</span> </button> <button class="carousel-control-next"
+                type="button" data-bs-target="#myCarousel" data-bs-slide="next"> <span
+                    class="carousel-control-next-icon" aria-hidden="true"></span> <span
+                    class="visually-hidden">Next</span> </button>
+        </div>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <section>
+        
+    </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous">
+    </script>
+    
     <script src="?page=dashboardUser"></script>
 </body>
 

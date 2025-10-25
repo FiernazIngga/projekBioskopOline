@@ -7,6 +7,7 @@ switch ($page) {
     // Halaman utama
     case 'home':
         include "src/view/home.php";
+        echo '<link rel="stylesheet" href="src/view/home.css">';
         break;
 
     // Authentication
