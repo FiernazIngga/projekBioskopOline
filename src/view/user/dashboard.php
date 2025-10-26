@@ -347,7 +347,7 @@ $role = $_SESSION['role_user'];
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-4 col-lg-3 d-none d-lg-block">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
+                                    <div class="card text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
                                         <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
                                             class="card-img-top" alt="Cars 3">
                                     </div>
