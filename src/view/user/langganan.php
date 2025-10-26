@@ -34,9 +34,7 @@ $id = $_SESSION['id_user'];
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark wadahNavbar">
         <div class="container">
-            <a class="navbar-brand logoAplikasi" href="?page=dashboardUser">
-                <i class="fas fa-play-circle me-2"></i>MovieUPN
-            </a>
+            <a class="navbar-brand logoAplikasi" href="?page=dashboardUser">Kembali</a>
             <button class="navbar-toggler tombolToggle" type="button" data-bs-toggle="collapse"
                 data-bs-target="#menuUtama">
                 <span class="navbar-toggler-icon"></span>
@@ -88,7 +86,7 @@ $id = $_SESSION['id_user'];
                         <span>❌ Kustomisasi player</span>
                     </p>
                     <div class="tombolPaket">
-                        <button onclick="langganan('basic', '<?= $_SESSION['id_user']; ?>')" class="btn btn-primary">Langganan</button>
+                        <button onclick="langganan('Basic', '<?= $_SESSION['id_user']; ?>')" class="btn btn-primary">Langganan</button>
                     </div>
                 </div>
             </div>
@@ -102,7 +100,7 @@ $id = $_SESSION['id_user'];
                         <span>✅ Kustomisasi player</span>
                     </p>
                     <div class="tombolPaket">
-                        <button onclick="langganan('premium', '<?= $_SESSION['id_user']; ?>')" class="btn btn-primary">Langganan</button>
+                        <button onclick="langganan('Premium', '<?= $_SESSION['id_user']; ?>')" class="btn btn-primary">Langganan</button>
                     </div>
                 </div>
             </div>

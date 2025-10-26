@@ -10,12 +10,12 @@
 
     $id_user = $_GET['root'] ?? null;
     $role = $_GET['paket'];
-    $roleTitle = ($_GET['paket'] === "basic") ? "Basic" : "Premium";
     $harga = ($role === "Basic") ? 100000 : 200000;
 
     $error = "";
     $catatan = "";
     $succes = null;
+    $result = null;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nominalUang = $_POST['nominalUang'] ?? 0;
@@ -33,7 +33,6 @@
             } else { 
                 $result = cekDanMasukan(false, $role, $nominalUang - $harga);
             }
-
             if (isset($result)) {
                 $succes = $result->sukses;
                 $catatan = $result->catatan;

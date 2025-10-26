@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#navbar {
+    z-index: 9999;
+    top: 0;
+    position: sticky;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+#isi {
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 3em 2em;
+    background: linear-gradient(135deg, #e3f2fd, #f9f9f9);
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    margin-bottom: 3em;
+}
+
+.button a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    height: 3em;
+    width: 12em;
+    border-radius: 10px;
+    font-weight: 500;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.button a:nth-child(1) {
+    background: transparent;
+    box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3);
+    color: #0097a7;
+    border: 1.5px solid #0097a7;
+}
+
+.button a:nth-child(1):hover {
+    background: #0097a7;
+    color: white;
+}
+
+.button a:nth-child(2) {
+    background: transparent;
+    box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3);
+    color: #0097a7;
+    border: 1.5px solid #0097a7;
+}
+
+.button a:nth-child(2):hover {
+    background: #0097a7;
+    color: white;
+}
+
+.tampilan {
+    width: 90%;
+}
+
+.containerTampil {
+    width: 100%;
+}
