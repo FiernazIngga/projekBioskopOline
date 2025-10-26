@@ -12,7 +12,7 @@
 
 <body>
 	<section id="navbar">
-		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<nav class="navbar navbar-expand-lg">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="?page=admin123">Admin Page</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -33,7 +33,7 @@
 						</li>
 					</ul>
 					<div class="d-flex" role="search">
-						<a class="btn btn-outline-danger" href="?page=login">Logout</a>
+						<a class="btn btn-outline-warning" href="?page=login">Logout</a>
 					</div>
 				</div>
 			</div>
