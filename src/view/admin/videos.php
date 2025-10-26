@@ -10,8 +10,10 @@
     } else if ($aksi === 'lihat') {
         $isi = ambilVideo();
     } else if ($aksi === 'tambah') {
-        # code...
-    }
+        $isi = tambahVideo();
+    } else if ($aksi === 'simpan') {
+    $isi = prosesUploadVideo();
+}
 
 ?>
 
