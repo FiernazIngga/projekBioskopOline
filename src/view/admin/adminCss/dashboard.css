@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../../../uploads/admin/bgHome.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#navbar {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    backdrop-filter: blur(8px);
+}
+
+#ucapan {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ucapan {
+    width: 28em;
+    height: auto;
+    padding: 3em 2em;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    animation: siTengahMasuk .5s ease-in-out;
+}
+
+.ucapan h1 {
+    font-weight: 700;
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 1em;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.buttonCepat a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #00ebc7;
+    border: 2px solid #00ebc7;
+    padding: 0.6em 2em;
+    border-radius: 12px;
+    transition: all 0.3s ease-in-out;
+    margin: 0 0.5em;
+    display: inline-block;
+}
+
+.buttonCepat a:hover {
+    background: #00ebc7;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 235, 199, 0.4);
+}
+
+@keyframes siTengahMasuk {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

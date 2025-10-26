@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.4.3/dist/css/themes/bootstrap/bootstrap.min.css" rel="stylesheet" integrity="sha384-2N+IHl7TflsBD/9pe1QB8uLoBoE7kIODejp9eye2tfbvhuO+EiyissU8aWDbzxjJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="?page=home">
-    <title>Ticket Online</title>
+    <title>Bioskop Online</title>
 </head>
 
 <body>

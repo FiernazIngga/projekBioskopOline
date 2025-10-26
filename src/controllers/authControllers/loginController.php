@@ -8,21 +8,40 @@ include __DIR__ . "/../../databases/koneksi.php";
 function cekExpired($idUser) {
     global $connect;
     $cek = $connect->prepare("SELECT * FROM role WHERE id_user = ?");
-    $cek->execute([$idUser]);
+    $cek->bind_param("s", $idUser);
+    $cek->execute();
     $hasil = $cek->get_result();
     $rolePengguna = $hasil->fetch_assoc();
     if ($rolePengguna["role_user"] !== "Free" && $rolePengguna["expired_at"] && new DateTime($rolePengguna["expired_at"]) < new DateTime()) {
         $update = $connect->prepare("UPDATE role SET role_user = 'Free', expired_at = NULL WHERE id_user = ?");
-        $update->execute([$idUser]);
+        $update->bind_param("s", $idUser);
+        $update->execute();
+    }
+}
+
+function admin($username, $password) {
+    global $connect;
+    $dataAdmin = $connect->prepare("SELECT * FROM admin_data WHERE username = ? AND password = ?");
+    $dataAdmin->bind_param("ss", $username, $password);
+    $dataAdmin->execute();
+    $hasilDataAdmin = $dataAdmin->get_result();
+    if ($result->num_rows !== 0) {
+        $dataAdminAssoc = $hasilDataAdmin->fetch_assoc();
+        if ($username === $dataAdminAssoc['username'] && $password === $dataAdminAssoc['password']) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
     }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
-    $errors = [];
     if (empty($username) || empty($password)) {
-        $errors[] = 'Username dan password harus diisi';
+        $_SESSION['error'] = 'Username dan password harus diisi';
     }
     if (!empty($error)) {
         $_SESSION['error'] = $error;
@@ -34,9 +53,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query->execute();
     $result = $query->get_result();
     if ($result->num_rows === 0) {
-        $_SESSION['error'] = ['Username tidak ditemukan'];
-        header('Location: ?page=login');
-        exit;
+        $cekLoginAdmin = admin($username, $password);
+        if ($cekLoginAdmin) {
+            header('Location: ?page=admin123');
+            exit;
+        } else {
+            $_SESSION['error'] = ['Username tidak ditemukan'];
+            header('Location: ?page=login');
+            exit;
+        }
     }
     $user = $result->fetch_assoc();
     if ($password !== $user['password']) {
