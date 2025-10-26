@@ -6,11 +6,62 @@
     z-index: 9999;
 }
 
-.carousel-item img {
+.banner img {
     height: 400px;              /* tinggi tetap */
     width: 100%;                /* lebar penuh */
     object-fit: cover;          /* crop sesuai ukuran */
     object-position: top;
+    filter: brightness(70%); /* 100% normal, semakin kecil semakin gelap */
+    
+}
+.sikil{
+    background-color: black;
+    color: white;
+}
+.tranding {
+    color: #ffffff;
+    background-color:black;
+}
+.kartuFilm {
+    border-radius: 12px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: none;
+    overflow: hidden;
+    background-color: #1a1a1a; /* warna dasar card */
+    transform-origin: center;
+}
+
+.kartuFilm:hover {
+    transform: scale(1.05) translateY(-5px); /* membesar & sedikit naik */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* bayangan saat hover */
+    z-index: 10; /* supaya tampil di atas card lain */
+}
+
+.kartuFilm img {
+    transition: transform 0.4s ease;
+}
+
+.kartuFilm:hover img {
+    transform: scale(1.1); /* gambar dalam card juga ikut membesar */
+}
+.kartuFilm:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.85);
+}
+
+.carousel-inner {
+  overflow: visible !important;
+}
+
+/* Pastikan juga posisi card tidak tergeser aneh */
+.carousel-item {
+  overflow: visible;
+}
+
+
+.berita{
+    background-color: #000000;
+    color: white;
 }
 .logoAplikasi {
     font-weight: bold;
