@@ -71,6 +71,12 @@ switch ($page) {
         echo '<script src="src/view/admin/adminJs/videos.js"></script>';
         break;
 
+    case 'users':
+        include "src/view/admin/users.php";
+        echo '<link rel="stylesheet" href="src/view/admin/adminCss/users.css">';
+        
+        break;
+
     default:
         echo "<h2>Halaman tidak ditemukan</h2>";
         break;

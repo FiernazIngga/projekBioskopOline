@@ -7,13 +7,26 @@
     box-sizing: border-box;
 }
 
-#navbar {
-    z-index: 9999;
-    top: 0;
-    position: sticky;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+body {
+    background-image: url("../../../uploads/admin/bgHome.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: darken;
 }
-
+#navbar {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    backdrop-filter: blur(100px);
+}
 #isi {
     width: 100%;
     min-height: 90vh;
@@ -22,7 +35,7 @@
     align-items: center;
     justify-content: start;
     padding: 3em 2em;
-    background: linear-gradient(135deg, #e3f2fd, #f9f9f9);
+  
 }
 
 .button {

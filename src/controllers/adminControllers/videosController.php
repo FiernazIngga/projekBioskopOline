@@ -18,8 +18,8 @@ function ambilVideo() {
     $html = '
     <div class="containerTampil mt-4">
         <h3 class="mb-3 text-center">Daftar Video</h3>
-        <table class="table table-striped-columns table-hover">
-            <thead class="table-info text-center">
+        <table class="table table-dark table-striped-columns table-hover">
+            <thead class="table text-center">
                 <tr>
                     <th>No</th>
                     <th>Judul</th>
@@ -36,7 +36,6 @@ function ambilVideo() {
     $no = 1;
     while ($video = $hasil->fetch_assoc()) {
         $judul = $video["judul"];
-        $lihatVideo = $video["nama_file"];
         $tanggal = date("d M Y", strtotime($video["tanggal_upload"]));
         $role = $video["role"];
         $view = number_format($video["jumlah_view"]);
