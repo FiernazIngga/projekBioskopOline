@@ -1,19 +1,23 @@
 <?php 
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
-if (!isset($_SESSION['username'])) {
-    header('Location: ?page=login');
-    exit;
-}
+    include __DIR__ . "/../../controllers/userControllers/cekAuth.php";
 
-$username = $_SESSION['username'];
-$nama = $_SESSION['nama'];
-$email = $_SESSION['email'];
-$foto = dirname($_SERVER['SCRIPT_NAME']) . '/src/uploads/poto_profil/' . $_SESSION['foto_profil'];
-$id = $_SESSION['id_user'];
+    $idUser = $_SESSION['id_user'] ?? null;
+    
+    if ($idUser && !cekData($idUser)) {
+        header('Location: ?page=login');
+        exit;
+    }
+
+    $username = $_SESSION['username'];
+    $nama = $_SESSION['nama'];
+    $email = $_SESSION['email'];
+    $foto = dirname($_SERVER['SCRIPT_NAME']) . '/src/uploads/poto_profil/' . $_SESSION['foto_profil'];
+    $id = $_SESSION['id_user'];
 
 ?> 
 

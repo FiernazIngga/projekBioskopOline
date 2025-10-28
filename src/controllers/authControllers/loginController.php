@@ -25,7 +25,7 @@ function admin($username, $password) {
     $dataAdmin->bind_param("ss", $username, $password);
     $dataAdmin->execute();
     $hasilDataAdmin = $dataAdmin->get_result();
-    if ($result->num_rows !== 0) {
+    if ($hasilDataAdmin->num_rows !== 0) {
         $dataAdminAssoc = $hasilDataAdmin->fetch_assoc();
         if ($username === $dataAdminAssoc['username'] && $password === $dataAdminAssoc['password']) {
             return true;
@@ -55,7 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows === 0) {
         $cekLoginAdmin = admin($username, $password);
         if ($cekLoginAdmin) {
-            header('Location: ?page=admin123');
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            header("Location: " . $base_url . "routeAdmin.php?adminPage=admin123");
             exit;
         } else {
             $_SESSION['error'] = ['Username tidak ditemukan'];

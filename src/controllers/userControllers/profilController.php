@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['email'] = $email;
         $_SESSION['foto_profil'] = $fotoProfil;
 
-        echo "<script>alert('Profil berhasil diperbarui!'); window.location='?page=profil';</script>";
+        echo "<script>alert('Profil berhasil diperbarui!'); window.location='?page=dashboardUser';</script>";
     } else {
         echo "<script>alert('Terjadi kesalahan saat menyimpan perubahan.'); window.location='?page=profil';</script>";
     }

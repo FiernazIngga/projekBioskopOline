@@ -1,15 +1,9 @@
 <?php 
 
-    include __DIR__ . "/../../controllers/adminControllers/videosController.php";
+    include __DIR__ . "/../../controllers/adminControllers/usersController.php";
 
     $isi = "";
-    $page = $_GET['adminPage'];
-    $aksi = $_GET['aksi'] ?? '';
-    if ($aksi === '') {
-        $isi = ambilVideo();
-    } else if ($aksi === 'tambah') {
-        $isi = tambahVideo();
-    }
+    $isi = ambilUsers();
 
 ?>
 
@@ -19,10 +13,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dashboard Admin</title>
+	<title>Users</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-	<link rel="stylesheet" href="?adminPage=videos">
+	<link rel="stylesheet" href="?adminPage=users">
 </head>
 
 <body>
@@ -41,10 +35,10 @@
 							<a class="nav-link" aria-current="page" href="?adminPage=admin123">Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" href="?adminPage=videos">Add Video</a>
+							<a class="nav-link" href="?adminPage=videos">Add Video</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="?adminPage=users">Users</a>
+							<a class="nav-link active" href="?adminPage=users">Users</a>
 						</li>
 					</ul>
 					<div class="d-flex" role="search">
@@ -56,10 +50,6 @@
 	</section>
 
     <section id="isi">
-        <div class="button">
-            <a href="?adminPage=videos">Lihat Semua</a>
-            <a href="?adminPage=videos&aksi=tambah">Tambah Video</a>
-        </div>
         <div class="tampilan">
             <?= $isi; ?>
         </div>
