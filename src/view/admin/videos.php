@@ -9,7 +9,13 @@
         $isi = ambilVideo();
     } else if ($aksi === 'tambah') {
         $isi = tambahVideo();
+<<<<<<< HEAD
     }
+=======
+    } else if ($aksi === 'simpan') {
+    $isi = prosesUploadVideo();
+}
+>>>>>>> 4e5e489047ab09d61eab6ddd24799bc7fe6e1cbc
 
 ?>
 
@@ -27,7 +33,7 @@
 
 <body>
 	<section id="navbar">
-		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<nav class="navbar navbar-expand-lg">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="?page=admin123">Admin Page</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"

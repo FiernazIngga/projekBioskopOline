@@ -59,6 +59,27 @@ switch ($page) {
         echo '<script src="src/view/user/userJs/bayar.js"></script>';
         break;
 
+<<<<<<< HEAD
+=======
+    case 'admin123':
+        include "src/view/admin/dashboardAdmin.php";
+        echo '<link rel="stylesheet" href="src/view/admin/adminCss/dashboard.css">';
+        echo '<script src="src/view/admin/adminJs/dashboard.js"></script>';
+        break;
+
+    case 'videos':
+        include "src/view/admin/videos.php";
+        echo '<link rel="stylesheet" href="src/view/admin/adminCss/videos.css">';
+        echo '<script src="src/view/admin/adminJs/videos.js"></script>';
+        break;
+
+    case 'users':
+        include "src/view/admin/users.php";
+        echo '<link rel="stylesheet" href="src/view/admin/adminCss/users.css">';
+        
+        break;
+
+>>>>>>> 4e5e489047ab09d61eab6ddd24799bc7fe6e1cbc
     default:
         echo "<h2>Halaman tidak ditemukan</h2>";
         break;

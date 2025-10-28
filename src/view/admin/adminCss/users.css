@@ -7,6 +7,7 @@
     box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 #navbar {
     z-index: 9999;
     top: 0;
@@ -125,3 +126,23 @@ tbody tr:hover {
     background-color: red;
     color: white;
 }
+=======
+body {
+    background-image: url("../../../uploads/admin/bgHome.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#navbar {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    backdrop-filter: blur(100px);
+}
+>>>>>>> 4e5e489047ab09d61eab6ddd24799bc7fe6e1cbc
