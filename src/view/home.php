@@ -39,7 +39,7 @@
                     </li>
                 </ul>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-outline-danger me-md-2" type="button">Sign In</button>
+                    <a href="?page=daftar" class="btn btn-outline-danger me-md-2" type="button">Sign In</a>
                     <a href="?page=login"><button class="btn btn-outline-light" type="button">Log In</button></a>
                 </div>
             </div>

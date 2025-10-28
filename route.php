@@ -59,6 +59,8 @@ switch ($page) {
         echo '<script src="src/view/user/userJs/bayar.js"></script>';
         break;
 
+<<<<<<< HEAD
+=======
     case 'admin123':
         include "src/view/admin/dashboardAdmin.php";
         echo '<link rel="stylesheet" href="src/view/admin/adminCss/dashboard.css">';
@@ -77,6 +79,7 @@ switch ($page) {
         
         break;
 
+>>>>>>> 4e5e489047ab09d61eab6ddd24799bc7fe6e1cbc
     default:
         echo "<h2>Halaman tidak ditemukan</h2>";
         break;

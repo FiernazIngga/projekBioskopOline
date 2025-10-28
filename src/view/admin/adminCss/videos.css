@@ -90,3 +90,54 @@ body {
 .containerTampil {
     width: 100%;
 }
+<<<<<<< HEAD
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3);
+}
+
+thead {
+    background-color: #0097a7;
+    color: white;
+}
+
+th {
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    border-bottom: 2px solid #007c8a;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+tbody tr:hover {
+    background-color: #e0f7fa;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.buttonHapus {
+    text-decoration: none;
+    padding: 0 .3em;
+    background-color: white;
+    color: red;
+    border-radius: 5px;
+    border: 1px solid red;
+    transition: all ease-in-out .1s;
+}
+
+.buttonHapus:hover {
+    background-color: red;
+    color: white;
+}
+=======
+>>>>>>> 4e5e489047ab09d61eab6ddd24799bc7fe6e1cbc
