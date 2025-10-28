@@ -72,10 +72,10 @@ function ambilVideo() {
 
 function tambahVideo(){
     return '
-    <div class="container mt-4">
+    <div class="container">
         <h3>Upload Video Baru</h3>
         <form action="?page=videos&aksi=simpan" method="POST" enctype="multipart/form-data">
-                  <div class="mb-3">
+            <div class="mb-3">
                 <label for="judul" class="form-label">Judul Video</label>
                 <input type="text" class="form-control" id="judul" name="judul" required>
             </div>
@@ -84,14 +84,18 @@ function tambahVideo(){
                 <textarea class="form-control" id="deskripsi" name="deskripsi" rows="2"></textarea>
             </div>
             <div class="mb-3">
+                <label for="thumbnail" class="form-label">Pilih thumbnail Video</label>
+                <input type="file" class="form-control" id="thumbnail" name="thumbnail" accept="picture/*" required>
+            </div>
+            <div class="mb-3">
                 <label for="video_file" class="form-label">Pilih File Video</label>
                 <input type="file" class="form-control" id="video_file" name="video_file" accept="video/*" required>
             </div>
             <div class="mb-3">
                 <label for="role" class="form-label">Role Pengunggah</label>
                 <select name="role" id="role" class="form-select">
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
+                    <option value="standart">Standart</option>
+                    <option value="premium">Premium</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Upload Video</button>
@@ -111,13 +115,14 @@ function prosesUploadVideo() {
     if (!file_exists($targetDir)) {
         mkdir($targetDir, 0777, true);
     }
-
+    
     $namaFileAsli = $_FILES["video_file"]["name"];
     $namaSementara = $_FILES["video_file"]["tmp_name"];
     $ekstensi = pathinfo($namaFileAsli, PATHINFO_EXTENSION);
     $namaUnik = uniqid("vid_") . "." . $ekstensi;
     $targetFile = $targetDir . $namaUnik;
-
+    
+    
     // Validasi ukuran (maks 100MB)
     if ($_FILES["video_file"]["size"] > 100 * 1024 * 1024) {
         return '<div class="alert alert-danger mt-3 text-center">Ukuran file terlalu besar (maksimal 100MB)</div>';
