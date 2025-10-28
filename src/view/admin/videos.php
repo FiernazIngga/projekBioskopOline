@@ -9,13 +9,7 @@
         $isi = ambilVideo();
     } else if ($aksi === 'tambah') {
         $isi = tambahVideo();
-<<<<<<< HEAD
     }
-=======
-    } else if ($aksi === 'simpan') {
-    $isi = prosesUploadVideo();
-}
->>>>>>> 4e5e489047ab09d61eab6ddd24799bc7fe6e1cbc
 
 ?>
 

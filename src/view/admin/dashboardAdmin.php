@@ -33,11 +33,7 @@
 						</li>
 					</ul>
 					<div class="d-flex" role="search">
-<<<<<<< HEAD
 						<a class="btn btn-outline-danger" href="?adminPage=logout">Logout</a>
-=======
-						<a class="btn btn-outline-warning" href="?page=login">Logout</a>
->>>>>>> 4e5e489047ab09d61eab6ddd24799bc7fe6e1cbc
 					</div>
 				</div>
 			</div>

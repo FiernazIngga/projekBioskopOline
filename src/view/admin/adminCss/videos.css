@@ -16,8 +16,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    
-    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.4);
     background-blend-mode: darken;
 }
@@ -90,7 +88,6 @@ body {
 .containerTampil {
     width: 100%;
 }
-<<<<<<< HEAD
 
 table {
     border-collapse: collapse;
@@ -139,5 +136,3 @@ tbody tr:hover {
     background-color: red;
     color: white;
 }
-=======
->>>>>>> 4e5e489047ab09d61eab6ddd24799bc7fe6e1cbc
