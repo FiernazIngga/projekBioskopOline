@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows === 0) {
         $cekLoginAdmin = admin($username, $password);
         if ($cekLoginAdmin) {
-            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskopOline/";
             header("Location: " . $base_url . "routeAdmin.php?adminPage=admin123");
             exit;
         } else {
