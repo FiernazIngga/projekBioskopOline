@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambahVideo'])) {
     $videoName = null;
     if (!empty($_FILES['video']['name'])) {
         $videoName = time() . "_" . basename($_FILES['video']['name']);
+        $videoName = str_replace(' ', '', time() . "_" . basename($_FILES['video']['name']));
         $videoPath = $letakVideo . $videoName;
         $videoM = move_uploaded_file($_FILES['video']['tmp_name'], $videoPath);
     }
@@ -33,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambahVideo'])) {
     $thumbnailName = null;
     if (!empty($_FILES['thumbnail']['name'])) {
         $thumbnailName = time() . "_" . basename($_FILES['thumbnail']['name']);
+        $thumbnailName = str_replace(' ', '', time() . "_" . basename($_FILES['thumbnail']['name']));
         $thumbnailPath = $letakThumbnail . $thumbnailName;
         $tum = move_uploaded_file($_FILES['thumbnail']['tmp_name'], $thumbnailPath);
     }
@@ -41,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambahVideo'])) {
     $trailerName = null;
     if (!empty($_FILES['trailer']['name'])) {
         $trailerName = time() . "_" . basename($_FILES['trailer']['name']);
+        $trailerName = str_replace(' ', '', time() . "_" . basename($_FILES['trailer']['name']));
         $trailerPath = $letakTrailer . $trailerName;
         $trailerM = move_uploaded_file($_FILES['trailer']['tmp_name'], $trailerPath);
     }

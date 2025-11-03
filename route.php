@@ -33,7 +33,7 @@ switch ($page) {
         if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
             $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
             header("Location: " . $base_url . "route.php?page=login");
-            break;
+            exit();
         }
         include "src/view/user/dashboard.php";
         echo '<link rel="stylesheet" href="src/view/user/userCss/dashboard.css">';
@@ -43,7 +43,7 @@ switch ($page) {
         if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
             $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
             header("Location: " . $base_url . "route.php?page=login");
-            break;
+            exit();
         }
         include "src/view/user/tandai.php";
         echo '<link rel="stylesheet" href="src/view/user/userCss/tandai.css">';
@@ -53,7 +53,7 @@ switch ($page) {
         if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
             $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
             header("Location: " . $base_url . "route.php?page=login");
-            break;
+            exit();
         }
         include "src/view/user/riwayat.php";
         echo '<link rel="stylesheet" href="src/view/user/userCss/riwayat.css">';
@@ -63,7 +63,7 @@ switch ($page) {
         if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
             $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
             header("Location: " . $base_url . "route.php?page=login");
-            break;
+            exit();
         }
         include "src/controllers/userControllers/profilController.php";
         include "src/view/user/profile.php";
@@ -74,7 +74,7 @@ switch ($page) {
         if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
             $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
             header("Location: " . $base_url . "route.php?page=login");
-            break;
+            exit();
         }
         include "src/controllers/userControllers/langgananController.php";
         include "src/view/user/langganan.php";
@@ -85,11 +85,26 @@ switch ($page) {
         if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
             $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
             header("Location: " . $base_url . "route.php?page=login");
-            break;
+            exit();
         }
         include "src/view/user/bayar.php";
         echo '<link rel="stylesheet" href="src/view/user/userCss/bayar.css">';
         echo '<script src="src/view/user/userJs/bayar.js"></script>';
+        break;
+    case 'nonton':
+        if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            header("Location: " . $base_url . "route.php?page=login");
+            exit();
+        }
+        include "src/view/user/nonton.php";
+        echo '<link rel="stylesheet" href="src/view/user/userCss/nonton.css">';
+        echo '<script src="src/view/user/userJs/nonton.js"></script>';
+        break;
+    case 'detail':
+        include "src/view/user/detail.php";
+        echo '<link rel="stylesheet" href="src/view/user/userCss/detail.css">';
+        echo '<script src="src/view/user/userJs/detail.js"></script>';
         break;
     default:
         echo "<h2>Halaman tidak ditemukan</h2>";

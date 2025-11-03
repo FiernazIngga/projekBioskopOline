@@ -1,156 +1,240 @@
-.selamatdatang {
-    background-image: url('https://curupekspress.disway.id/upload/93ea1c090d9a8c9c901f301222e625a0.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: local;
-    background-position: center;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.403);
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-blend-mode: darken;
-
-}
-.sikil{
-    background-color: black;
-    color: white;
-}
-.tranding {
-    color: #ffffff;
-    background-color:black;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .wadahNavbar {
-    background-color: #000000;
+    background-color: #000;
     padding: 12px 0;
+    transition: all 0.3s ease;
 }
 
 .logoAplikasi {
-    font-weight: bold;
+    font-weight: 700;
     color: #e50914;
     font-size: 1.5rem;
 }
 
 .tautanNavigasi {
     font-weight: 500;
-    color: #ffffff;
+    color: #fff;
     margin: 0 15px;
-    transition: color 0.3s ease;
     position: relative;
+    transition: color 0.3s ease;
 }
 
 .tautanNavigasi:hover {
     color: #e50914;
 }
 
-.menuNav::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #e50914;
-}
-
-.gambarProfil {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #444;
-    transition: border-color 0.3s ease;
-}
-
-.gambarProfil:hover {
-    border-color: #e50914;
-}
-
-.kotakPencarian {
-    max-width: 280px;
-    position: relative;
-}
-
-.inputPencarian {
-    background-color: #2d2d2d;
-    border: 1px solid #444;
-    color: white;
-    padding-left: 40px;
-}
-
-.inputPencarian:focus {
-    background-color: #2d2d2d;
-    border-color: #e50914;
-    color: white;
-    box-shadow: 0 0 0 0.2rem rgba(229, 9, 20, 0.25);
-}
-
-.inputPencarian::placeholder {
-    color: #aaa;
-}
-
-.ikonPencarian {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #aaa;
-    z-index: 10;
-}
-
-.menuDropdown {
-    border: none;
-    background-color: #2d2d2d;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    min-width: 200px;
-}
-
-.itemDropdown {
-    color: #ffffff;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease;
-}
-
-.itemDropdown:hover {
-    background-color: #e50914;
-    color: white;
-}
-
-.pemisahDropdown {
-    border-top: 1px solid #444;
-    margin: 5px 0;
-}
-
-.headerDropdown {
-    color: #aaa;
-    font-size: 0.8rem;
-    padding: 5px 20px;
-}
-
 .tombolToggle {
     border: 1px solid #444;
 }
 
-.tombolToggle:focus {
-    box-shadow: 0 0 0 0.2rem rgba(229, 9, 20, 0.25);
+.selamatdatang {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://curupekspress.disway.id/upload/93ea1c090d9a8c9c901f301222e625a0.jpg') center/cover no-repeat;
+    color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-/* Responsif */
+.selamatdatang h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.isiSelamat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3em;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    opacity: 1; 
+}
+
+.jelajahi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    width: 10em;
+    max-width: 100%;
+    margin-top: 2em;
+    color: white;
+    background-color: transparent;
+    border: 1.2px solid red;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
+    transition: all 0.3s ease;
+}
+
+.jelajahi:hover {
+    width: 13em;
+    background-color: #e50914;
+}
+
+.tranding {
+    background-color: #000;
+    color: #fff;
+    padding: 5em 2em;
+}
+
+.tranding h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3em;
+    color: #e50914;
+}
+
+.containerTre {
+    opacity: 1; 
+}
+
+.movie-card {
+    background-color: #111;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    filter: brightness(90%);
+    transition: filter 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.4);
+}
+
+.card-body {
+    background-color: #111;
+    color: white;
+}
+
+.sectionTentangKami {
+    background-color: #111;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5em 0;
+    font-family: "Poppins", sans-serif;
+}
+
+.kontainerTentangKami {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.headerTentangKami {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.headerTentangKami h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #e50914;
+}
+
+.headerTentangKami p {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+.daftarAnggota {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.kartuAnggota {
+    background-color: #1c1c1c;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 220px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.kartuAnggota h3 {
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.kartuAnggota p {
+    color: #bbb;
+    font-size: 0.95rem;
+}
+
+.fotoAnggota {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #e50914;
+}
+
+.sikil {
+    background-color: #000000;
+    color: #ccc;
+    padding: 3em 0;
+}
+
+.sikil h5 {
+    color: #e50914;
+}
+
+.sikil a {
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.sikil a:hover {
+    color: #e50914;
+}
+
+.footerAsik {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
 @media (max-width: 991.98px) {
     .tautanNavigasi {
         margin: 5px 0;
         padding: 10px 15px;
     }
 
-    .kotakPencarian {
-        margin: 15px 0;
-        max-width: 100%;
+    .movie-card img {
+        height: 250px;
     }
+}
 
-    .menuDropdown {
-        background-color: #1a1a1a;
+@media (max-width: 768px) {
+    .daftarAnggota {
+        flex-direction: column;
+        align-items: center;
     }
 }

@@ -18,5 +18,7 @@ foreach ($keys as $key) {
     unset($_SESSION[$key]);
 }
 
+unset($_SESSION['userLogin']);
+
 header('Location: ?page=login');
 exit;
