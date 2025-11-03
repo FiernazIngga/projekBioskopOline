@@ -25,7 +25,6 @@ function ambilVideo() {
                 <tr>
                     <th>No</th>
                     <th>Judul</th>
-                    <th>Video</th>
                     <th>Tanggal Upload</th>
                     <th>Role</th>
                     <th>Jumlah View</th>
@@ -53,12 +52,6 @@ function ambilVideo() {
             <tr>
                 <td class='text-center'>{$no}</td>
                 <td>{$judul}</td>
-                <td>
-                    <video width='200' height='120' controls>
-                        <source src='{$videoPath}' type='video/mp4'>
-                        Browser Anda tidak mendukung pemutar video.
-                    </video>
-                </td>
                 <td class='text-center'>{$tanggal}</td>
                 <td class='text-center'>{$role}</td>
                 <td class='text-center'>{$view}</td>

@@ -1,7 +1,22 @@
 <?php 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-session_start();
-session_unset();
-session_destroy();
+$keys = [
+    'username',
+    'nama',
+    'email',
+    'password',
+    'foto_profil',
+    'id_user',
+    'id_role',
+    'role_user'
+];
+
+foreach ($keys as $key) {
+    unset($_SESSION[$key]);
+}
+
 header('Location: ?page=login');
 exit;

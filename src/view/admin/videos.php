@@ -48,7 +48,7 @@
 						</li>
 					</ul>
 					<div class="d-flex" role="search">
-						<a class="btn btn-outline-danger" href="?page=login">Logout</a>
+						<a class="btn btn-outline-danger" href="?adminPage=logout">Logout</a>
 					</div>
 				</div>
 			</div>
@@ -57,8 +57,8 @@
 
     <section id="isi">
         <div class="button">
-            <a href="?adminPage=videos">Lihat Semua</a>
-            <a href="?adminPage=videos&aksi=tambah">Tambah Video</a>
+            <a href="?adminPage=videos" id="lihatSemua">Lihat Semua</a>
+            <a href="?adminPage=videos&aksi=tambah"  id="tambahVideo">Tambah Video</a>
         </div>
         <div class="tampilan">
             <?= $isi; ?>
@@ -68,6 +68,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
 		crossorigin="anonymous"></script>
+	<script src="?adminPage=videos"></script>
 </body>
 
 </html>

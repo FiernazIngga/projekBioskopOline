@@ -42,7 +42,7 @@
 						</li>
 					</ul>
 					<div class="d-flex" role="search">
-						<a class="btn btn-outline-danger" href="?page=login">Logout</a>
+						<a class="btn btn-outline-danger" href="?adminPage=logout">Logout</a>
 					</div>
 				</div>
 			</div>

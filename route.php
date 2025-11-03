@@ -1,4 +1,7 @@
 <?php 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
@@ -27,33 +30,63 @@ switch ($page) {
             
     // Halaman User
     case 'dashboardUser':
+        if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            header("Location: " . $base_url . "route.php?page=login");
+            break;
+        }
         include "src/view/user/dashboard.php";
         echo '<link rel="stylesheet" href="src/view/user/userCss/dashboard.css">';
         echo '<script src="src/view/user/userJs/dashboard.js"></script>';
         break;
     case 'tandai':
+        if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            header("Location: " . $base_url . "route.php?page=login");
+            break;
+        }
         include "src/view/user/tandai.php";
         echo '<link rel="stylesheet" href="src/view/user/userCss/tandai.css">';
         echo '<script src="src/view/user/userJs/tandai.js"></script>';
         break;
     case 'riwayat':
+        if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            header("Location: " . $base_url . "route.php?page=login");
+            break;
+        }
         include "src/view/user/riwayat.php";
         echo '<link rel="stylesheet" href="src/view/user/userCss/riwayat.css">';
         echo '<script src="src/view/user/userJs/riwayat.js"></script>';
         break;
     case 'profil':
+        if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            header("Location: " . $base_url . "route.php?page=login");
+            break;
+        }
         include "src/controllers/userControllers/profilController.php";
         include "src/view/user/profile.php";
         echo '<link rel="stylesheet" href="src/view/user/userCss/profil.css">';
         echo '<script src="src/view/user/userJs/profil.js"></script>';
         break;
     case 'langganan':
+        if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            header("Location: " . $base_url . "route.php?page=login");
+            break;
+        }
         include "src/controllers/userControllers/langgananController.php";
         include "src/view/user/langganan.php";
         echo '<link rel="stylesheet" href="src/view/user/userCss/langganan.css">';
         echo '<script src="src/view/user/userJs/langganan.js"></script>';
         break;
     case 'bayar':
+        if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            header("Location: " . $base_url . "route.php?page=login");
+            break;
+        }
         include "src/view/user/bayar.php";
         echo '<link rel="stylesheet" href="src/view/user/userCss/bayar.css">';
         echo '<script src="src/view/user/userJs/bayar.js"></script>';

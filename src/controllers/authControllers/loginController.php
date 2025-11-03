@@ -62,9 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows === 0) {
         $query->close();
         $cekLoginAdmin = admin($username, $password);
+        $_SESSION['adminLogin'] = false;
         if ($cekLoginAdmin) {
             $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
             $connect->close();
+            $_SESSION['adminLogin'] = true;
             header("Location: " . $base_url . "routeAdmin.php?adminPage=admin123");
             exit;
         } else {
@@ -78,20 +80,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $result->fetch_assoc();
     $query->close(); 
 
+    $_SESSION['userLogin'] = false;
     if ($password !== $user['password']) {
         $_SESSION['error'] = ['Password salah'];
         $connect->close();
         header('Location: ?page=login');
         exit;
     }
-
-    $_SESSION['username'] = $user['username'];
-    $_SESSION['nama'] = $user['nama'];
-    $_SESSION['email'] = $user['email'];
-    $_SESSION['password'] = $password;
-    $_SESSION['foto_profil'] = $user['foto_profil'];
-    $_SESSION['id_user'] = $user['id_user'];
-
+    $_SESSION['userLogin'] = true;
     cekExpired($user['id_user']);
 
     $queryRole = $connect->prepare("SELECT id_role, id_user, role_user, expired_at FROM role WHERE id_user = ?");
@@ -101,6 +97,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_role = $resultRole->fetch_assoc();
     $queryRole->close(); 
 
+    $_SESSION['username'] = $user['username'];
+    $_SESSION['nama'] = $user['nama'];
+    $_SESSION['email'] = $user['email'];
+    $_SESSION['password'] = $password;
+    $_SESSION['foto_profil'] = $user['foto_profil'];
+    $_SESSION['id_user'] = $user['id_user'];
     $_SESSION['id_role'] = $user_role['id_role'];
     $_SESSION['role_user'] = $user_role['role_user'];
 
