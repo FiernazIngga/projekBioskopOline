@@ -8,11 +8,6 @@ switch ($page) {
         echo '<link rel="stylesheet" href="src/view/admin/adminCss/dashboard.css">';
         echo '<script src="src/view/admin/adminJs/dashboard.js"></script>';
         break;
-    case 'admin123':
-        include "src/view/admin/dashboardAdmin.php";
-        echo '<link rel="stylesheet" href="src/view/admin/adminCss/dashboard.css">';
-        echo '<script src="src/view/admin/adminJs/dashboard.js"></script>';
-        break;
     case 'videos':
         include "src/view/admin/videos.php";
         echo '<link rel="stylesheet" href="src/view/admin/adminCss/videos.css">';

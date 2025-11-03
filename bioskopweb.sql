@@ -31,7 +31,7 @@ CREATE TABLE `admin_data` (
   `id_admin` int NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin_data`
@@ -49,9 +49,9 @@ INSERT INTO `admin_data` (`id_admin`, `username`, `password`) VALUES
 CREATE TABLE `role` (
   `id_role` int NOT NULL,
   `id_user` varchar(255) NOT NULL,
-  `role_user` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Free',
+  `role_user` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'Free',
   `expired_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `role`
@@ -74,7 +74,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `foto_profil` varchar(100) NOT NULL DEFAULT 'default.png'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -93,8 +93,8 @@ INSERT INTO `users` (`id_user`, `nama`, `username`, `password`, `email`, `foto_p
 CREATE TABLE `video` (
   `id` int NOT NULL,
   `judul` varchar(255) NOT NULL,
-  `sinopsis` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `file_video` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `sinopsis` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `file_video` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `thumbnail` varchar(255) DEFAULT NULL,
   `genre` varchar(100) DEFAULT NULL,
   `durasi` varchar(20) DEFAULT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE `video` (
   `jumlah_like` int DEFAULT '0',
   `rating` int DEFAULT '0',
   `trailer` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `video`
