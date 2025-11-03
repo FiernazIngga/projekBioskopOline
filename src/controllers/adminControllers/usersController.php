@@ -25,6 +25,8 @@ function ambilUsers() {
         <div class="alert alert-warning text-center mt-4">
             Belum ada user yang join.
         </div>';
+        $konekDbRole->close();
+        $konekDb->close();
         return $html;
     }
 
@@ -73,6 +75,7 @@ function ambilUsers() {
             </tbody>
         </table>
     </div>';
-
+    $konekDbRole->close();
+    $konekDb->close();
     return $html;
 }

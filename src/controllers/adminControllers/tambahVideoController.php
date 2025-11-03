@@ -11,7 +11,10 @@ function folder($folder) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambahVideo'])) {
-    $videoM = false; $tum = false; $trailerM = false;
+    $videoM = false; 
+    $tum = false; 
+    $trailerM = false;
+
     $judul = $_POST['judul'];
     $sinopsis = $_POST['sinopsis'];
     $genre = $_POST['genre'];
@@ -19,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambahVideo'])) {
     $role = $_POST['role'];
 
     $letakVideo = folder("videos");
-    $videoPath = "";
+    $videoName = null;
     if (!empty($_FILES['video']['name'])) {
         $videoName = time() . "_" . basename($_FILES['video']['name']);
         $videoPath = $letakVideo . $videoName;
@@ -27,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambahVideo'])) {
     }
 
     $letakThumbnail = folder("thumbnail");
-    $thumbnailPath = "";
+    $thumbnailName = null;
     if (!empty($_FILES['thumbnail']['name'])) {
         $thumbnailName = time() . "_" . basename($_FILES['thumbnail']['name']);
         $thumbnailPath = $letakThumbnail . $thumbnailName;
@@ -35,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambahVideo'])) {
     }
 
     $letakTrailer = folder("trailer");
-    $trailerPath = "";
+    $trailerName = null;
     if (!empty($_FILES['trailer']['name'])) {
         $trailerName = time() . "_" . basename($_FILES['trailer']['name']);
         $trailerPath = $letakTrailer . $trailerName;
@@ -47,12 +50,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambahVideo'])) {
         (judul, sinopsis, genre, durasi, role, file_video, thumbnail, trailer)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     ");
-    $queryMasukinVideo->bind_param("ssssssss", 
+    $queryMasukinVideo->bind_param(
+        "ssssssss", 
         $judul, $sinopsis, $genre, $durasi, $role, 
         $videoName, $thumbnailName, $trailerName
     );
-    
-    if ($queryMasukinVideo->execute() && $trailerM && $videoM && $tum) {
+
+    $success = $queryMasukinVideo->execute() && $trailerM && $videoM && $tum;
+
+    $queryMasukinVideo->close();
+    $connect->close();
+
+    if ($success) {
         echo "<script>
             alert('Video berhasil ditambahkan!');
             window.location.href='?adminPage=videos';

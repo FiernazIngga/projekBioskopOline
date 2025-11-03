@@ -10,21 +10,24 @@ $hasilData = $dataUser->get_result();
 $dataArray = $hasilData->fetch_assoc();
 $hariIni = new DateTime();
 $expired = $dataArray['expired_at'] ? new DateTime($dataArray['expired_at']) : null;
+$dataUser->close(); 
 
 function cekDanMasukan($cekBayar, $role, $uangLebih) {
-    global $connect, $idUser, $expired;
+    global $connect, $idUser, $expired, $hariIni;
     $catatanKembali = "";
     if (!$cekBayar) {
         $catatanKembali = ". Sisa uang anda Rp. " . $uangLebih;
     }
+
     $kembalikan = new stdClass();
+
     if ($_SESSION['role_user'] === "Free") {
-        global $hariIni;
         $newExpired = $hariIni->modify('+1 month')->format('Y-m-d H:i:s');
 
         $updateRole = $connect->prepare("UPDATE role SET role_user = ?, expired_at = ? WHERE id_user = ?");
         $updateRole->bind_param("sss", $role, $newExpired, $idUser);
         $updateRole->execute();
+        $updateRole->close();
 
         $ambilDataBaru = $connect->prepare("SELECT * FROM role WHERE id_user = ?");
         $ambilDataBaru->bind_param("s", $idUser);
@@ -32,24 +35,28 @@ function cekDanMasukan($cekBayar, $role, $uangLebih) {
         $hasilUpdate = $ambilDataBaru->get_result();
         $roleBaru = $hasilUpdate->fetch_assoc();
         $_SESSION['role_user'] = $roleBaru['role_user'];
+        $ambilDataBaru->close(); 
 
         $kembalikan->sukses = true;
         $kembalikan->catatan = "Anda berhasil berlangganan paket " . $roleBaru['role_user'] . $catatanKembali;
+
     } else if ($_SESSION['role_user'] === $role) {
         $expiredBaru = (clone $expired)->modify('+1 month')->format('Y-m-d H:i:s');
         $updateRole = $connect->prepare("UPDATE role SET expired_at = ? WHERE id_user = ?");
         $updateRole->bind_param("ss", $expiredBaru, $idUser);
         $updateRole->execute();
+        $updateRole->close(); 
 
         $kembalikan->sukses = true;
         $kembalikan->catatan = "Paket anda berhasil di perpanjang" . $catatanKembali;
+
     } else {
-        global $hariIni;
         $newExpired = $hariIni->modify('+1 month')->format('Y-m-d H:i:s');
 
         $ubahRole = $connect->prepare("UPDATE role SET role_user = ?, expired_at = ? WHERE id_user = ?");
         $ubahRole->bind_param("sss", $role, $newExpired, $idUser);
         $ubahRole->execute();
+        $ubahRole->close(); 
 
         $gantiPaket = $connect->prepare("SELECT * FROM role WHERE id_user = ?");
         $gantiPaket->bind_param("s", $idUser);
@@ -57,9 +64,10 @@ function cekDanMasukan($cekBayar, $role, $uangLebih) {
         $hasilGanti = $gantiPaket->get_result();
         $paketBaru = $hasilGanti->fetch_assoc();
         $_SESSION['role_user'] = $paketBaru['role_user'];
-
+        $gantiPaket->close(); 
         $kembalikan->sukses = true;
         $kembalikan->catatan = "Paket anda berhasil di ubah" . $catatanKembali;
     }
+
     return $kembalikan;
 }

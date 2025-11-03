@@ -14,12 +14,18 @@ if (isset($_GET['adminPage']) && $_GET['adminPage'] === 'hapusUser' && isset($_G
     $hapusUserRole->execute();
 
     if ($hapusUser->affected_rows > 0 && $hapusUserRole->affected_rows > 0) {
+        $hapusUserRole->close();
+        $hapusUser->close();
+        $connect->close();
         echo "<script>
             alert('Data user berhasil dihapus!');
             window.location.href='?adminPage=users';
         </script>";
         exit;
     }
+    $hapusUserRole->close();
+    $hapusUser->close();
+    $connect->close();
     echo "<script>
         alert('Data user tidak berhasil dihapus!');
         window.location.href='?adminPage=users';

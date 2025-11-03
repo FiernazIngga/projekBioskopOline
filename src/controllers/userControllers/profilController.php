@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
-    
+
     $fotoBaru = $_FILES['fotoProfil']['name'] ?? '';
     $uploadDir = __DIR__ . '/../../uploads/poto_profil/';
     $fotoSekarang = $_SESSION['foto_profil'];
@@ -44,16 +44,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $fotoProfil = $fotoSekarang;
     }
 
-    $queryPassword = "";
     if (!empty($password)) {
-        $queryPassword = ", password = '$password'";
+        $stmt = $connect->prepare("UPDATE users SET nama = ?, username = ?, email = ?, password = ?, foto_profil = ? WHERE id_user = ?");
+        $stmt->bind_param("ssssss", $nama, $username, $email, $password, $fotoProfil, $id);
+    } else {
+        $stmt = $connect->prepare("UPDATE users SET nama = ?, username = ?, email = ?, foto_profil = ? WHERE id_user = ?");
+        $stmt->bind_param("sssss", $nama, $username, $email, $fotoProfil, $id);
     }
 
-    $query = "UPDATE users 
-              SET nama = '$nama', username = '$username', email = '$email', foto_profil = '$fotoProfil' $queryPassword 
-              WHERE id_user = '$id'";
-
-    if (mysqli_query($connect, $query)) {
+    if ($stmt->execute()) {
         $_SESSION['nama'] = $nama;
         $_SESSION['username'] = $username;
         $_SESSION['email'] = $email;
@@ -63,5 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         echo "<script>alert('Terjadi kesalahan saat menyimpan perubahan.'); window.location='?page=profil';</script>";
     }
+
+    $stmt->close(); 
 }
 ?>

@@ -33,7 +33,6 @@ body {
     align-items: center;
     justify-content: start;
     padding: 3em 2em;
-  
 }
 
 .button {
@@ -110,16 +109,12 @@ th {
 td {
     padding: 10px;
     text-align: center;
+    background-color: #e0f7fa;
     border-bottom: 1px solid #ddd;
 }
 
 tbody tr:nth-child(even) {
     background-color: #f8f8f8;
-}
-
-tbody tr:hover {
-    background-color: #e0f7fa;
-    transition: background-color 0.2s ease-in-out;
 }
 
 .buttonHapus {

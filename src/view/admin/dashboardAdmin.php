@@ -12,7 +12,7 @@
 
 <body>
 	<section id="navbar">
-		<nav class="navbar navbar-expand-lg">
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="?adminPage=admin123">Admin Page</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"

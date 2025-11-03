@@ -3,7 +3,6 @@
 include __DIR__ . "/../../databases/koneksi.php";
 
 function cekData($idUser) {
-
     if (!$idUser) {
         return false;
     }
@@ -13,8 +12,9 @@ function cekData($idUser) {
     $cekData->bind_param("s", $idUser);
     $cekData->execute();
     $hasil = $cekData->get_result();
-    if ($hasil->num_rows === 0) {
-        return false;
-    }
-    return true;
+
+    $ada = $hasil->num_rows !== 0;
+
+    $cekData->close(); 
+    return $ada;
 }

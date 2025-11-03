@@ -44,4 +44,6 @@ if (isset($_GET['adminPage']) && $_GET['adminPage'] === 'hapusVideo' && isset($_
         </script>";
         exit;
     }
+    $ambil->close();
 }
+$connect->close();

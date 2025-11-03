@@ -4,11 +4,13 @@ include __DIR__ . "/../../databases/koneksi.php";
 
 function ambilVideo() {
     global $connect;
+
     $konekDb = $connect->prepare("SELECT * FROM video");
     $konekDb->execute();
     $hasil = $konekDb->get_result();
 
     if ($hasil->num_rows === 0) {
+        $konekDb->close(); 
         return '
         <div class="alert alert-warning text-center mt-4">
             Belum ada video yang diupload.
@@ -33,39 +35,38 @@ function ambilVideo() {
                 </tr>
             </thead>
             <tbody>';
-    
+
     $no = 1;
     while ($video = $hasil->fetch_assoc()) {
         $id = $video['id'];
-        $judul = $video["judul"];
+        $judul = htmlspecialchars($video["judul"]);
         $tanggal = date("d M Y", strtotime($video["tanggal_upload"]));
-        $role = $video["role"];
+        $role = htmlspecialchars($video["role"]);
         $view = number_format($video["jumlah_view"]);
         $like = number_format($video["jumlah_like"]);
         $rating = $video["rating"];
         $file = htmlspecialchars($video["file_video"]);
 
         $videoPath = "src/uploads/videos/" . $file;
-        echo "
-            <script>
-                alert('$file')
-            </script>
-        ";
 
         $html .= "
             <tr>
                 <td class='text-center'>{$no}</td>
                 <td>{$judul}</td>
-                <td> <video width='200' height='120' controls>
+                <td>
+                    <video width='200' height='120' controls>
                         <source src='{$videoPath}' type='video/mp4'>
                         Browser Anda tidak mendukung pemutar video.
-                    </video></td>
+                    </video>
+                </td>
                 <td class='text-center'>{$tanggal}</td>
                 <td class='text-center'>{$role}</td>
                 <td class='text-center'>{$view}</td>
                 <td class='text-center'>{$like}</td>
                 <td class='text-center'>{$rating}/5</td>
-                <td class='text-center'><a class='buttonHapus' href='?adminPage=hapusVideo&video={$id}'>Hapus</a></td>
+                <td class='text-center'>
+                    <a class='buttonHapus' href='?adminPage=hapusVideo&video={$id}'>Hapus</a>
+                </td>
             </tr>";
         $no++;
     }
@@ -74,6 +75,8 @@ function ambilVideo() {
             </tbody>
         </table>
     </div>';
+
+    $konekDb->close();
 
     return $html;
 }
