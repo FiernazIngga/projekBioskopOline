@@ -90,7 +90,20 @@
             </div>
         </div>
     </nav>
-
+    <section class="sikil" data-bs-theme="dark">
+        <div class="container">
+            <footer class="py-5">
+                <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                    <p>© 2025 AffanFiernaz, Inc. All rights reserved.</p>
+                    <ul class="list-unstyled d-flex" data>
+                        <li><a class="link-body-emphasis me-3" href="#"><i class="fab fa-instagram fa-lg"></i></a></li>
+                        <li><a class="link-body-emphasis me-3" href="#"><i class="fab fa-facebook fa-lg"></i></a></li>
+                        <li><a class="link-body-emphasis" href="#"><i class="fab fa-github fa-lg"></i></i></a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
     <script src="?page=tandai"></script>

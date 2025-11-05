@@ -85,7 +85,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link tautanNavigasi" href="#">
+                            <a class="nav-link tautanNavigasi" href="?page=genre">
                                 <i class="fas fa-film me-1"></i> Genre
                             </a>
                         </li>
