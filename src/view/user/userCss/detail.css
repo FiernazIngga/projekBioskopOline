@@ -17,11 +17,11 @@ body {
     background-color: #434242;
     width: 90%;
     max-width: 1200px;
-    margin: 120px auto 40px;
+    margin: 70px auto 40px;
     display: flex;
     gap: 40px;
     align-items: flex-start;
-    padding: 5em 2em;
+    padding: 3em 2em;
     border-radius: 10px;
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
     animation: fadeIn 0.7s ease-in-out;

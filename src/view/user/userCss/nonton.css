@@ -40,6 +40,14 @@ video {
     background: black;
 }
 
+.video-player {
+    width: 100%;
+    max-width: 900px; /* atur sesuai kebutuhan */
+    aspect-ratio: 16 / 9; /* biar kotaknya ikut rasio video */
+    object-fit:contain; /* potong poster agar pas */
+    background-color: black; /* biar tidak ada area putih */
+}
+
 .sinopsisBox {
     background: rgba(255, 255, 255, 0.03);
     padding: 16px;
