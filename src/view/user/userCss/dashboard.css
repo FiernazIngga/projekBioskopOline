@@ -215,9 +215,16 @@
     width: 50%;
     border-radius: 10px;
     text-align: center;
-    background-color: rgb(0, 153, 255);
     color: #111;
     font-weight: bold;
+}
+
+.Basic {
+    background-color: rgb(0, 153, 255);
+}
+
+.Premium {
+    background-color: rgb(255, 166, 0);
 }
 
 .aksi {

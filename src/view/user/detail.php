@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include __DIR__ . "/../../databases/koneksi.php";
 
 $id = $_GET['id'] ?? '';
@@ -20,13 +23,13 @@ $page = $_GET['dari'] ?? "asd";
 
 $stmt->close();
 
-if (isset($_GET['simpan']) && isset($_GET['idBukuDiSimpan'])) {
-    $simpan = $connect->prepare("INSERT INTO simpan_film (id_film, id_user) VALUES (?, ?)");
-    $simpan->bind_param("ss", $_GET['idBukuDiSimpan'], $_SESSION['id_user']);
-    if ($simpan->execute()) {
-        # code...
-    }
-
+if (isset($_SESSION['message'])) {
+    echo '
+        <script>
+        alert("'.$_SESSION['message'].'");
+        </script>
+    ';
+    unset($_SESSION['message']);
 }
 ?>
 
@@ -62,7 +65,7 @@ if (isset($_GET['simpan']) && isset($_GET['idBukuDiSimpan'])) {
 
             <a href="route.php?page=<?= $page ?>" class="tombolKembali">← Kembali ke Beranda</a>
             <a href="?page=nonton&id=<?= $id ?>" class="tombolTonton" target="_blank">🎬 Tonton Sekarang</a>
-            <a href="?page=simpan$idBukuDiSimpan=<?= $id ?>" class="tombolSimpan">
+            <a href="?page=simpan&idBukuDiSimpan=<?= $id ?>" class="tombolSimpan">
                 Simpan
                 <img src="src/uploads/icon/bookmarkwhite.png" alt="Bookmark Icon">
             </a>

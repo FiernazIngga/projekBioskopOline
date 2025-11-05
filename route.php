@@ -116,6 +116,9 @@ switch ($page) {
         echo '<link rel="stylesheet" href="src/view/user/userCss/detail.css">';
         echo '<script src="src/view/user/userJs/detail.js"></script>';
         break;
+    case 'simpan':
+        include "src/controllers/userControllers/simpanBukuController.php";
+        break;
     default:
         echo "<h2>Halaman tidak ditemukan</h2>";
         break;

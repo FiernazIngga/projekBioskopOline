@@ -33,7 +33,7 @@
         } else {
             while ($hasil = $cek->fetch_assoc()) {
                 $tampil .= '
-                    <a href="?page=detail&id='.$hasil['id'].'&dari='.$page.'" class="cardImg">
+                    <a href="?page=detail&id='.$hasil['id'].'" class="cardImg">
                         <div class="image">
                             <img src="src/uploads/thumbnail/'.$hasil["thumbnail"].'" alt="">
                         </div>
@@ -41,7 +41,7 @@
                             <h2 class="judulImg">'.$hasil["judul"].'</h2>
                             <p>Durasi : '.$hasil["durasi"].'</p>
                             <p class="rating">Rating : '.$hasil["rating"].'</p>
-                            <div class="role">'.$hasil["role"].'</div>
+                            <div class="role '.$hasil["role"].'">'.$hasil["role"].'</div>
                         </div>
                     </a>
                 ';
