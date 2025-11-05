@@ -117,6 +117,32 @@ footer {
     font-size: 0.9rem;
 }
 
+.tombolSimpan {
+    display: inline-flex;      
+    align-items: center;         
+    gap: 0.5em;                  
+    padding: 6px 12px;            
+    background-color: #e50914;    
+    color: #fff;                  
+    font-weight: bold;
+    text-decoration: none;        
+    margin-left: 1em;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.tombolSimpan img {
+    width: 1em;                  
+    height: 1em;
+    display: block;
+    filter: invert(100%);       
+}
+
+.tombolSimpan:hover {
+    background-color: #b20710;    
+    transform: scale(1.05);     
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;

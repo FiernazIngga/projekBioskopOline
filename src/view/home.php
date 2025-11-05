@@ -7,6 +7,7 @@ $video->execute();
 $videos = $video->get_result();
 
 $tampilVideo = "";
+$page = $_GET['page'] ?? "home";
 
 if ($videos->num_rows === 0) {
     $tampilVideo = "<h2 style='color: white;'>Film segera menyusul</h2>";
@@ -16,7 +17,7 @@ if ($videos->num_rows === 0) {
         $path = 'src/uploads/thumbnail/' . $file;
         $tampilVideo .= '
             <div class="col-6 col-md-3">
-                <a href="route.php?page=detail&id=' . $dataVideo['id'] . '" class="card movie-card" style="text-decoration:none; color:inherit;">
+                <a href="route.php?page=detail&id=' . $dataVideo['id'] . '&dari='.$page.'" class="card movie-card" style="text-decoration:none; color:inherit;">
                     <img src="' . $path . '" alt="' . $dataVideo["judul"] . '" />
                     <div class="card-body text-center">
                         <h5 class="card-title">' . $dataVideo["judul"] . '</h5>
@@ -119,10 +120,9 @@ $connect->close();
 
     <footer class="sikil py-5" id="contact">
         <div class="containerS">
-            <div class="row">
-                <div class="col-md-6 mb-3 footerAsik">
+                <div class="footerAsik">
                     <div>
-                        <h5>Tentang Kami</h5>
+                        <h5>Footer</h5>
                         <p>Proyek praktikum Pemrograman Web Semester 3 - Informatika UPN</p>
                     </div>
                     <div>
@@ -130,7 +130,6 @@ $connect->close();
                         <p>📞 0851-2345-6789</p>
                     </div>
                 </div>
-            </div>
         </div>
     </footer>
 

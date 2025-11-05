@@ -20,6 +20,37 @@
     $id = $_SESSION['id_user'];
     $role = $_SESSION['role_user'];
 
+    $page = $_GET['page'] ?? "asd";
+
+    function ambilSemuaFilm() {
+        global $connect, $page;
+        $ambil = $connect->prepare("SELECT id, thumbnail, judul, rating, durasi, role FROM video");
+        $ambil->execute();
+        $cek = $ambil->get_result();
+        $tampil = "";
+        if ($cek->num_rows === 0) {
+            $tampil = "<h1>Belum ada video</h1>";
+        } else {
+            while ($hasil = $cek->fetch_assoc()) {
+                $tampil .= '
+                    <a href="?page=detail&id='.$hasil['id'].'&dari='.$page.'" class="cardImg">
+                        <div class="image">
+                            <img src="src/uploads/thumbnail/'.$hasil["thumbnail"].'" alt="">
+                        </div>
+                        <div class="keterangan">
+                            <h2 class="judulImg">'.$hasil["judul"].'</h2>
+                            <p>Durasi : '.$hasil["durasi"].'</p>
+                            <p class="rating">Rating : '.$hasil["rating"].'</p>
+                            <div class="role">'.$hasil["role"].'</div>
+                        </div>
+                    </a>
+                ';
+            }
+        }
+        $ambil->close();
+        return $tampil;
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -119,7 +150,6 @@
                             <h1>Example headline.</h1>
                             <p class="opacity-75">Some representative placeholder content for the first slide of the
                                 carousel.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
                         </div>
                     </div>
                 </div>
@@ -130,7 +160,6 @@
                         <div class="carousel-caption">
                             <h1>Another example headline.</h1>
                             <p>Some representative placeholder content for the second slide of the carousel.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
                         </div>
                     </div>
                 </div>
@@ -141,7 +170,6 @@
                         <div class="carousel-caption text-end">
                             <h1>One more for good measure.</h1>
                             <p>Some representative placeholder content for the third slide of this carousel.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
                         </div>
                     </div>
                 </div>
@@ -154,337 +182,16 @@
         </div>
     </section>
 
-    <section class="tranding">
-        <div class="container">
-            <div class="pt-5">
-                <h3>Sedang Tren</h3>
-                <div id="carouselTranding" class="carousel slide p-5" data-bs-wrap="false">
-                    <div class="carousel-inner">
-                        <!-- Slide 1 -->
-                        <div class="carousel-item active">
-                            <div class="row justify-content-center g-4 gx-5">
-                                <div class="col-3 col-md-3 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-                                <div class="col-3 col-md-3 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://m.media-amazon.com/images/M/MV5BMTQ2NTMxODEyNV5BMl5BanBnXkFtZTcwMDgxMjA0MQ@@._V1_.jpg"
-                                            class="card-img-top" alt="Movie">
-                                    </div>
-                                </div>
-                                <div class="col-3 col-md-3 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-                                <div class="col-3 col-md-3 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- Slide 2 -->
-                        <div class="carousel-item">
-                            <div class="row justify-content-center g-4 gx-5">
-                                <div class="col-6 col-md-4 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://m.media-amazon.com/images/M/MV5BMTQ2NTMxODEyNV5BMl5BanBnXkFtZTcwMDgxMjA0MQ@@._V1_.jpg"
-                                            class="card-img-top" alt="Movie">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-3 d-none d-lg-block">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://m.media-amazon.com/images/M/MV5BMTQ2NTMxODEyNV5BMl5BanBnXkFtZTcwMDgxMjA0MQ@@._V1_.jpg"
-                                            class="card-img-top" alt="Movie">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-3 d-none d-lg-block">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 3 -->
-                        <div class="carousel-item">
-                            <div class="row justify-content-center g-4 gx-5">
-                                <div class="col-6 col-md-4 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://m.media-amazon.com/images/M/MV5BMTQ2NTMxODEyNV5BMl5BanBnXkFtZTcwMDgxMjA0MQ@@._V1_.jpg"
-                                            class="card-img-top" alt="Movie">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-3 d-none d-lg-block">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-3 d-none d-lg-block">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselTranding"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselTranding"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-
-                </div>
-            </div>
-            <div class>
-                <h3>Terbaru</h3>
-                <div id="carouselTerbaru" class="carousel slide p-5" data-bs-wrap="false">
-                    <div class="carousel-inner">
-                        <!-- Slide 1 -->
-                        <div class="carousel-item active">
-                            <div class="row justify-content-center g-4 gx-5">
-                                <div class="col-3 col-md-3 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-                                <div class="col-3 col-md-3 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://m.media-amazon.com/images/M/MV5BMTQ2NTMxODEyNV5BMl5BanBnXkFtZTcwMDgxMjA0MQ@@._V1_.jpg"
-                                            class="card-img-top" alt="Movie">
-                                    </div>
-                                </div>
-                                <div class="col-3 col-md-3 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-                                <div class="col-3 col-md-3 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- Slide 2 -->
-                        <div class="carousel-item">
-                            <div class="row justify-content-center g-4 gx-5">
-                                <div class="col-6 col-md-4 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://m.media-amazon.com/images/M/MV5BMTQ2NTMxODEyNV5BMl5BanBnXkFtZTcwMDgxMjA0MQ@@._V1_.jpg"
-                                            class="card-img-top" alt="Movie">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-3 d-none d-lg-block">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://m.media-amazon.com/images/M/MV5BMTQ2NTMxODEyNV5BMl5BanBnXkFtZTcwMDgxMjA0MQ@@._V1_.jpg"
-                                            class="card-img-top" alt="Movie">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-3 d-none d-lg-block">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 3 -->
-                        <div class="carousel-item">
-                            <div class="row justify-content-center g-4 gx-5">
-                                <div class="col-6 col-md-4 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-3">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://m.media-amazon.com/images/M/MV5BMTQ2NTMxODEyNV5BMl5BanBnXkFtZTcwMDgxMjA0MQ@@._V1_.jpg"
-                                            class="card-img-top" alt="Movie">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-3 d-none d-lg-block">
-                                    <div class="card kartuFilm text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4 col-lg-3 d-none d-lg-block">
-                                    <div class="card text-bg-dark border-0 rounded-4 shadow-lg overflow-hidden">
-                                        <img src="https://lumiere-a.akamaihd.net/v1/images/p_cars3_19643_3ab8aca1.jpeg"
-                                            class="card-img-top" alt="Cars 3">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselTerbaru"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselTerbaru"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="berita">
-        <div class="container">
-            <h3>Berita Terkini</h3>
-            <div class="row pt-2">
-                <div class="col-md-6">
-                    <div
-                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                        <div class="col p-4 d-flex flex-column position-static"> <strong
-                                class="d-inline-block mb-2 text-primary-emphasis">World</strong>
-                            <h3 class="mb-0">Featured post</h3>
-                            <div class="mb-1 text-body-secondary">Nov 12</div>
-                            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural
-                                lead-in to additional content.</p> <a href="#"
-                                class="icon-link gap-1 icon-link-hover stretched-link">
-                                Continue reading
-                                <svg class="bi" aria-hidden="true">
-                                    <use xlink:href="#chevron-right"></use>
-                                </svg> </a>
-                        </div>
-                        <div class="col-auto d-none d-lg-block"> <svg aria-label="Placeholder: Thumbnail"
-                                class="bd-placeholder-img " height="250" preserveAspectRatio="xMidYMid slice" role="img"
-                                width="200" xmlns="http://www.w3.org/2000/svg">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%"
-                                    fill="#eceeef" dy=".3em">Thumbnail</text>
-                            </svg> </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div
-                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                        <div class="col p-4 d-flex flex-column position-static"> <strong
-                                class="d-inline-block mb-2 text-success-emphasis">Design</strong>
-                            <h3 class="mb-0">Post title</h3>
-                            <div class="mb-1 text-body-secondary">Nov 11</div>
-                            <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to
-                                additional content.</p> <a href="#"
-                                class="icon-link gap-1 icon-link-hover stretched-link">
-                                Continue reading
-                                <svg class="bi" aria-hidden="true">
-                                    <use xlink:href="#chevron-right"></use>
-                                </svg> </a>
-                        </div>
-                        <div class="col-auto d-none d-lg-block"> <svg aria-label="Placeholder: Thumbnail"
-                                class="bd-placeholder-img " height="250" preserveAspectRatio="xMidYMid slice" role="img"
-                                width="200" xmlns="http://www.w3.org/2000/svg">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%"
-                                    fill="#eceeef" dy=".3em">Thumbnail</text>
-                            </svg> </div>
-                    </div>
-                </div>
-            </div>
+    <section id="video">
+        <h1 class="judulSF">Nikmati Film Terbaru dan Keren</h1>
+        <div class="containerFilm">
+            <?= ambilSemuaFilm(); ?>
         </div>
     </section>
 
      <section class="sikil" data-bs-theme="dark">
         <div class="container">
             <footer class="py-5">
-                <div class="row">
-                    <div class="col-6 col-md-2 mb-3">
-                        <h5>Section</h5>
-                        <ul class="nav flex-column">
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a>
-                            </li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
-                            </li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-6 col-md-2 mb-3">
-                        <h5>Section</h5>
-                        <ul class="nav flex-column">
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a>
-                            </li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
-                            </li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-6 col-md-2 mb-3">
-                        <h5>Section</h5>
-                        <ul class="nav flex-column">
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a>
-                            </li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a>
-                            </li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-5 offset-md-1 mb-3">
-                        <form>
-                            <h5>Subscribe to our newsletter</h5>
-                            <p>Monthly digest of what's new and exciting from us.</p>
-                            <div class="d-flex flex-column flex-sm-row w-100 gap-2"> <label for="newsletter1"
-                                    class="visually-hidden">Email address</label> <input id="newsletter1" type="email"
-                                    class="form-control" placeholder="Email address"> <button class="btn btn-danger"
-                                    type="button">Subscribe</button> </div>
-                        </form>
-                    </div>
-                </div>
                 <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
                     <p>© 2025 AffanFiernaz, Inc. All rights reserved.</p>
                     <ul class="list-unstyled d-flex" data>
