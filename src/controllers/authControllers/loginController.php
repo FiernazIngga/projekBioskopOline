@@ -100,7 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['username'] = $user['username'];
     $_SESSION['nama'] = $user['nama'];
     $_SESSION['email'] = $user['email'];
-    $_SESSION['password'] = $password;
     $_SESSION['foto_profil'] = $user['foto_profil'];
     $_SESSION['id_user'] = $user['id_user'];
     $_SESSION['id_role'] = $user_role['id_role'];

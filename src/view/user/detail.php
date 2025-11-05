@@ -18,8 +18,8 @@ if (!$data) {
 }
 
 $thumbnailPath = 'src/uploads/thumbnail/' . $data['thumbnail'];
+$trailerPath = 'src/uploads/trailer/' . $data['trailer'];
 $videoPath = 'src/uploads/videos/' . $data['file_video'];
-$page = $_GET['dari'] ?? "asd";
 
 $stmt->close();
 
@@ -30,6 +30,16 @@ if (isset($_SESSION['message'])) {
         </script>
     ';
     unset($_SESSION['message']);
+}
+
+if (isset($_GET['kembali']) && $_GET['kembali'] === "cek") {
+    if (isset($_SESSION['username'])) {
+        header("Location: ?page=dashboardUser");
+        exit;
+    } else {
+        header("Location: ?page=home");
+        exit;
+    }
 }
 ?>
 
@@ -45,7 +55,13 @@ if (isset($_SESSION['message'])) {
 
     <div class="containerUtama">
         <div class="gambarFilm">
-            <img src="<?= $thumbnailPath ?>" alt="<?= htmlspecialchars($data['judul']); ?>">
+            <video controls
+                poster="<?= $thumbnailPath ?>" 
+                controlsList="nodownload" 
+                disablePictureInPicture>
+                <source src="<?= $trailerPath ?>" type="video/mp4">
+                Browser Anda tidak mendukung pemutaran video.
+            </video>
         </div>
 
         <div class="infoFilm">
@@ -63,7 +79,7 @@ if (isset($_SESSION['message'])) {
                 <?= htmlspecialchars($data['sinopsis'] ?? 'Belum ada sinopsis untuk film ini.'); ?>
             </p>
 
-            <a href="route.php?page=<?= $page ?>" class="tombolKembali">← Kembali ke Beranda</a>
+            <a href="route.php?page=detail&kembali=cek&id=<?= $id; ?>" class="tombolKembali">← Kembali ke Beranda</a>
             <a href="?page=nonton&id=<?= $id ?>" class="tombolTonton" target="_blank">🎬 Tonton Sekarang</a>
             <a href="?page=simpan&idBukuDiSimpan=<?= $id ?>" class="tombolSimpan">
                 Simpan

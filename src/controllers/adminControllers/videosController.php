@@ -59,6 +59,7 @@ function ambilVideo() {
                 <td class='text-center'>{$rating}/5</td>
                 <td class='text-center'>
                     <a class='buttonHapus' href='?adminPage=hapusVideo&video={$id}'>Hapus</a>
+                    <a class='buttonHapus' href='?adminPage=editVideo&idVideo={$id}'>Edit</a>
                 </td>
             </tr>";
         $no++;

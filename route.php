@@ -117,6 +117,11 @@ switch ($page) {
         echo '<script src="src/view/user/userJs/detail.js"></script>';
         break;
     case 'simpan':
+        if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            header("Location: " . $base_url . "route.php?page=login");
+            exit();
+        }
         include "src/controllers/userControllers/simpanBukuController.php";
         break;
     default:

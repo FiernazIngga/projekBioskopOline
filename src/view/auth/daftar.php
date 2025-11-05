@@ -67,7 +67,9 @@
                 Sudah punya akun?
                 <a href="?page=login" class="linkTeks">Login di sini</a>
             </p>
-
+            <p class="teksKecil">
+                <a href="?page=home" class="linkTeks">Kembali</a>
+            </p>
             <p class="syaratKetentuan">
                 Dengan mendaftar, Anda menyetujui Syarat & Ketentuan yang berlaku
             </p>

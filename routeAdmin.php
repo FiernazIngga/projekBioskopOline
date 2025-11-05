@@ -60,6 +60,22 @@ switch ($page) {
         }
         include "src/controllers/adminControllers/tambahVideoController.php";
         break;
+    case 'editVideoControllers':
+        if (!isset($_SESSION['adminLogin']) || !$_SESSION['adminLogin']) {
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            header("Location: " . $base_url . "route.php?page=login");
+            break;
+        }
+        include "src/controllers/adminControllers/editControllers.php";
+        break;
+    case 'editVideo':
+        if (!isset($_SESSION['adminLogin']) || !$_SESSION['adminLogin']) {
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            header("Location: " . $base_url . "route.php?page=login");
+            break;
+        }
+        include "src/view/admin/editVideo.php";
+        break;
     case 'logout':
         include "src/controllers/adminControllers/logoutController.php";
         break;

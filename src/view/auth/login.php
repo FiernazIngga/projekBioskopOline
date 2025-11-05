@@ -42,6 +42,9 @@
                 Belum punya akun?
                 <a href="?page=daftar" class="linkTeks">Daftar di sini</a>
             </p>
+            <p class="teksKecil">
+                <a href="?page=home" class="linkTeks">Kembali</a>
+            </p>
         </form>
     </div>
 </body>

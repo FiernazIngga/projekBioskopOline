@@ -17,7 +17,7 @@ if ($videos->num_rows === 0) {
         $path = 'src/uploads/thumbnail/' . $file;
         $tampilVideo .= '
             <div class="col-6 col-md-3">
-                <a href="route.php?page=detail&id=' . $dataVideo['id'] . '&dari='.$page.'" class="card movie-card" style="text-decoration:none; color:inherit;">
+                <a href="route.php?page=detail&id=' . $dataVideo['id'] . '" class="card movie-card" style="text-decoration:none; color:inherit;">
                     <img src="' . $path . '" alt="' . $dataVideo["judul"] . '" />
                     <div class="card-body text-center">
                         <h5 class="card-title">' . $dataVideo["judul"] . '</h5>
