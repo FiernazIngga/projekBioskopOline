@@ -1,5 +1,5 @@
 .wadahNavbar {
-    background-color: #1a1a1a;
+    background-color: #000000;
     padding: 12px 0;
     position: sticky;
     top: 0;
@@ -11,7 +11,10 @@
     color: #e50914;
     font-size: 1.5rem;
 }
-
+.sikil{
+    background-color: black;
+    color: white;
+}
 .tautanNavigasi {
     font-weight: 500;
     color: #ffffff;
