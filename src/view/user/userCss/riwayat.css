@@ -123,6 +123,122 @@
     display: none !important;
 } 
 
+#video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2em;
+    padding: 2em;
+    background-color: #000;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+.containerFilm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3em;
+    padding: 2em;
+    background-color: #000;
+}
+
+.judulSF {
+    color: white;
+    margin: 1.2em 0;
+}
+
+.cardImg {
+    text-decoration: none;
+    background-color: #111;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 250px;
+    color: #fff;
+    text-align: center;
+    transition: all 0.35s ease;
+}
+
+.cardImg .image {
+    width: 100%;
+    height: 300px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+}
+
+.cardImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.3s ease;
+}
+
+.cardImg:hover .image img {
+    transform: scale(1.1);
+}
+
+.keterangan {
+    padding: 1em;
+    background-color: #111;
+    text-align: left;
+}
+
+.judulImg {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e50914;
+    margin-bottom: 0.5em;
+}
+
+.keterangan .rating {
+    margin-top: -15px;
+}
+
+.keterangan .tanggal {
+    margin-top: -15px;
+}
+
+.role {
+    width: 50%;
+    border-radius: 10px;
+    text-align: center;
+    color: #111;
+    font-weight: bold;
+}
+
+.Basic {
+    background-color: rgb(0, 153, 255);
+}
+
+.Premium {
+    background-color: rgb(255, 166, 0);
+}
+
+.aksi {
+    display: flex;
+    justify-content: space-between;
+}
+
+#video:has(.cardImg:hover) .cardImg {
+    opacity: 0.5;
+}
+
+#video:has(.cardImg:hover) .cardImg:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+}
+
+.simpan img {
+    width: 1em;
+    height: 1em; 
+    filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(200deg);
+}
+
 @media (max-width: 991.98px) {
     .tautanNavigasi {
         margin: 5px 0;

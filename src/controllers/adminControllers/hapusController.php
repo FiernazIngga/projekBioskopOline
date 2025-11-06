@@ -25,23 +25,50 @@ if (isset($_GET['adminPage']) && $_GET['adminPage'] === 'hapusVideo' && isset($_
             if (file_exists($pathThumb)) unlink($pathThumb);
             if (!empty($data['trailer']) && file_exists($pathTrailer)) unlink($pathTrailer);
 
-            echo "<script>
-                alert('Video dan file berhasil dihapus!');
-                window.location.href='?adminPage=videos';
-            </script>";
+            echo '
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    Swal.fire({
+                        text: "Anda berhasil menghapus video",
+                        icon: "success"
+                    }).then((result) => {
+                        window.location.href="?adminPage=videos";
+                    });
+                });
+            </script>
+            ';
             exit;
         } else {
-            echo "<script>
-                alert('Gagal menghapus video dari database.');
-                window.location.href='?adminPage=videos';
-            </script>";
+            echo '
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    Swal.fire({
+                        text: "Anda gagal menghapus video",
+                        icon: "error"
+                    }).then((result) => {
+                        window.location.href="?adminPage=videos";
+                    });
+                });
+            </script>
+            ';
             exit;
         }
     } else {
-        echo "<script>
-            alert('Data video tidak ditemukan!');
-            window.location.href='?adminPage=videos';
-        </script>";
+        echo '
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    Swal.fire({
+                        text: "Data video tidak ditemukan",
+                        icon: "error"
+                    }).then((result) => {
+                        window.location.href="?adminPage=videos";
+                    });
+                });
+            </script>
+            ';
         exit;
     }
     $ambil->close();

@@ -28,7 +28,7 @@ function ambilVideo() {
                     <th>Tanggal Upload</th>
                     <th>Role</th>
                     <th>Jumlah View</th>
-                    <th>Jumlah Like</th>
+                    <th>Jumlah Rating</th>
                     <th>Rating</th>
                     <th>Aksi</th>
                 </tr>
@@ -42,26 +42,30 @@ function ambilVideo() {
         $tanggal = date("d M Y", strtotime($video["tanggal_upload"]));
         $role = htmlspecialchars($video["role"]);
         $view = number_format($video["jumlah_view"]);
-        $like = number_format($video["jumlah_like"]);
+        $like = number_format($video["jumlah_perating"]);
         $rating = $video["rating"];
         $file = htmlspecialchars($video["file_video"]);
 
         $videoPath = "src/uploads/videos/" . $file;
 
-        $html .= "
+        $html .= '
             <tr>
-                <td class='text-center'>{$no}</td>
-                <td>{$judul}</td>
-                <td class='text-center'>{$tanggal}</td>
-                <td class='text-center'>{$role}</td>
-                <td class='text-center'>{$view}</td>
-                <td class='text-center'>{$like}</td>
-                <td class='text-center'>{$rating}/5</td>
-                <td class='text-center'>
-                    <a class='buttonHapus' href='?adminPage=hapusVideo&video={$id}'>Hapus</a>
-                    <a class='buttonHapus' href='?adminPage=editVideo&idVideo={$id}'>Edit</a>
+                <td class="text-center">'.$no.'</td>
+                <td>'.$judul.'</td>
+                <td class="text-center">'.$tanggal.'</td>
+                <td class="text-center">'.$role.'</td>
+                <td class="text-center">'.$view.'</td>
+                <td class="text-center">'.$like.'</td>
+                <td class="text-center">'.$rating.'/5</td>
+                <td class="text-center">
+                    <a href="?adminPage=hapusVideo&video='.$id.'" 
+                    class="buttonHapus" 
+                    onclick="return konfirmasiHapus(\''.addslashes($judul).'\', this.href);">
+                    Hapus
+                    </a>
+                    <a class="buttonHapus" href="?adminPage=editVideo&idVideo='.$id.'">Edit</a>
                 </td>
-            </tr>";
+            </tr>';
         $no++;
     }
 

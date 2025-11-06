@@ -58,10 +58,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['email'] = $email;
         $_SESSION['foto_profil'] = $fotoProfil;
 
-        echo "<script>alert('Profil berhasil diperbarui!'); window.location='?page=dashboardUser';</script>";
-    } else {
-        echo "<script>alert('Terjadi kesalahan saat menyimpan perubahan.'); window.location='?page=profil';</script>";
-    }
+        echo '
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Profil berhasil diperbarui"
+                    }).then(() => {
+                        window.location="?page=dashboardUser";
+                    });
+                });
+            </script>
+            ';
+        } else {
+            echo '
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Terjadi kesalahan saat menyimpan perubahan"
+                        }).then(() => {
+                            window.location="?page=profil";
+                        });
+                    });
+                </script>
+            ';
+        }
 
     $stmt->close(); 
 }

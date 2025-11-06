@@ -19,6 +19,44 @@
     $foto = dirname($_SERVER['SCRIPT_NAME']) . '/src/uploads/poto_profil/' . $_SESSION['foto_profil'];
     $id = $_SESSION['id_user'];
 
+function ambilSemuaFilm() {
+    global $connect, $id;
+    $ambil = $connect->prepare("
+        SELECT v.id, v.thumbnail, v.judul, v.rating, v.durasi, v.role
+        FROM simpan_film sf
+        INNER JOIN video v ON sf.id_film = v.id
+        WHERE sf.id_user = ?
+    ");
+
+    $ambil->bind_param("s", $id);
+    $ambil->execute();
+    $cek = $ambil->get_result();
+
+    $tampil = "";
+    if ($cek->num_rows === 0) {
+        $tampil = "<h1>Belum ada video</h1>";
+    } else {
+        while ($hasil = $cek->fetch_assoc()) {
+            $tampil .= '
+                <a href="?page=detail&id='.$hasil['id'].'" class="cardImg">
+                    <div class="image">
+                        <img src="src/uploads/thumbnail/'.$hasil["thumbnail"].'" alt="">
+                    </div>
+                    <div class="keterangan">
+                        <h2 class="judulImg">'.$hasil["judul"].'</h2>
+                        <p>Durasi : '.$hasil["durasi"].'</p>
+                        <p class="rating">Rating : '.$hasil["rating"].'</p>
+                        <div class="role '.$hasil["role"].'">'.$hasil["role"].'</div>
+                    </div>
+                </a>
+            ';
+        }
+    }
+
+    $ambil->close();
+    return $tampil;
+}
+
 ?> 
 
 <!DOCTYPE html>
@@ -90,6 +128,14 @@
             </div>
         </div>
     </nav>
+
+    <section id="video">
+        <h1 class="judulSF">Video yang anda tandai</h1>
+        <div class="containerFilm">
+            <?= ambilSemuaFilm(); ?>
+        </div>
+    </section>
+
     <section class="sikil" data-bs-theme="dark">
         <div class="container">
             <footer class="py-5">

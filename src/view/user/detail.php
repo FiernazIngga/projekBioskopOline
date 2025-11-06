@@ -23,10 +23,44 @@ $videoPath = 'src/uploads/videos/' . $data['file_video'];
 
 $stmt->close();
 
+$cek = $connect->prepare("SELECT * FROM simpan_film WHERE id_film = ? AND id_user = ?");
+$cek->bind_param("ss", $id, $_SESSION['id_user']);
+$cek->execute();
+$hasil = $cek->get_result();
+$cek->close();
+
+if ($hasil->num_rows > 0) { 
+    $tanda = "src/uploads/icon/bookmarkblack.png";
+} else {
+    $tanda = "src/uploads/icon/bookmarkwhite.png";
+}
+
+
 if (isset($_SESSION['message'])) {
+    $kata = "";
+    $icon = "";
+    if ($_SESSION['message'] === "saved") {
+        $icon = "success";
+        $kata = "Berhasil menyimpan buku";
+        $tanda = "src/uploads/icon/bookmarkblack.png";
+    } else if ($_SESSION['message'] === "error") {
+        $icon = "error";
+        $kata = "Gagal menyimpan buku";
+        $tanda = "src/uploads/icon/bookmarkwhite.png";
+    } else if ($_SESSION['message'] === "removed") {
+        $icon = "success";
+        $kata = "Berhasil menghapus buku dari simpan buku";
+        $tanda = "src/uploads/icon/bookmarkwhite.png";
+    }
     echo '
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
-        alert("'.$_SESSION['message'].'");
+            document.addEventListener("DOMContentLoaded", () => {
+                Swal.fire({
+                    icon: "'.$icon.'",
+                    title: "'.$kata.'"
+                });
+            });
         </script>
     ';
     unset($_SESSION['message']);
@@ -80,10 +114,10 @@ if (isset($_GET['kembali']) && $_GET['kembali'] === "cek") {
             </p>
 
             <a href="route.php?page=detail&kembali=cek&id=<?= $id; ?>" class="tombolKembali">← Kembali ke Beranda</a>
-            <a href="?page=nonton&id=<?= $id ?>" class="tombolTonton" target="_blank">🎬 Tonton Sekarang</a>
+            <a href="?page=nonton&id=<?= $id ?>" class="tombolTonton">🎬 Tonton Sekarang</a>
             <a href="?page=simpan&idBukuDiSimpan=<?= $id ?>" class="tombolSimpan">
                 Simpan
-                <img src="src/uploads/icon/bookmarkwhite.png" alt="Bookmark Icon">
+                <img src="<?= $tanda; ?>" alt="Bookmark Icon">
             </a>
         </div>
     </div>

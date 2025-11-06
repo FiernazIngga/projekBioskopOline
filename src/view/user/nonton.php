@@ -20,17 +20,27 @@ $data = $result->fetch_assoc();
 $stmt->close();
 
 if ($_SESSION['role_user'] === "Free" || $_SESSION['role_user'] === "Basic" && $data['role'] === "Premium") {
-    echo "
-    <script>
-        let konfirmasi = false;
-        konfirmasi = confirm('Paket anda sekarang {$_SESSION['role_user']} sedangkan video membutuhkan paket {$data['role']}, apakah anda mau meningkatkan langganan?');
-        if (konfirmasi) {
-            window.location.href = '?page=langganan';
-        } else {
-            window.location.href = '?page=detail&id={$id}';
-        }
-    </script>
-    ";
+    echo '
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                Swal.fire({
+                    title: "Wah Paket Anda Berbeda😥",
+                    text: "Paket anda sekarang '.$_SESSION['role_user'].' sedangkan video membutuhkan paket '.$data['role'].', apakah anda mau meningkatkan langganan?",
+                    icon: "question",
+                    showDenyButton: true,
+                    confirmButtonText: "Iyanih😃",
+                    denyButtonText: "Engga e🤧"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "?page=langganan";
+                    } else if (result.isDenied) {
+                        window.location.href = "?page=detail&id='.$id.'";
+                    }
+                });
+            });
+        </script>
+    ';
     exit;
 }
 
@@ -46,6 +56,31 @@ $updateView = $connect->prepare("UPDATE video SET jumlah_view = COALESCE(jumlah_
 $updateView->bind_param("s", $id);
 $updateView->execute();
 $updateView->close();
+
+$id_user = $_SESSION['id_user'] ?? '';
+$cekRiwayat = $connect->prepare("SELECT * FROM riwayat WHERE id_user = ? AND id_video = ?");
+$cekRiwayat->bind_param("ss", $id_user, $id);
+$cekRiwayat->execute();
+$resultRiwayat = $cekRiwayat->get_result();
+$tanggalSekarang = date('Y-m-d H:i:s');
+
+if ($resultRiwayat->num_rows === 0) {
+    $insertRiwayat = $connect->prepare("INSERT INTO riwayat (id_user, id_video, tanggal) VALUES (?, ?, ?)");
+    $insertRiwayat->bind_param("sss", $id_user, $id, $tanggalSekarang);
+    $insertRiwayat->execute();
+    $insertRiwayat->close();
+} else {
+    $updateRiwayat = $connect->prepare("UPDATE riwayat SET tanggal = ? WHERE id_user = ? AND id_video = ?");
+    $updateRiwayat->bind_param("sss", $tanggalSekarang, $id_user, $id);
+    $updateRiwayat->execute();
+    $updateRiwayat->close();
+}
+
+$cekRiwayat->close();
+
+$thumbnailPath = 'src/uploads/thumbnail/' . htmlspecialchars($data['thumbnail']);
+$videoPath = 'src/uploads/videos/' . htmlspecialchars($data['file_video']);
+
 ?>
 <!DOCTYPE html>
 <html lang="id">

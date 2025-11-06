@@ -13,11 +13,18 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
     $idVideo = $_GET['idVideo'] ?? "";
     if ($idVideo === "") {
         echo '
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script>
-            alert("Tidak ada id video, silahkan ulangi");
-            window.location.href="?adminPage=videos";
+                document.addEventListener("DOMContentLoaded", () => {
+                    Swal.fire({
+                        text: "Tidak ada id video, silahkan ulangi",
+                        icon: "error"
+                    }).then((result) => {
+                        window.location.href="?adminPage=videos";
+                    });
+                });
             </script>
-        ';
+            ';
     } else {
         $judul     = $_POST['judul'] ?? '';
         $sinopsis  = $_POST['sinopsis'] ?? '';
@@ -67,11 +74,18 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         $update->execute();
 
         echo '
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script>
-            alert("Data video berhasil diperbarui!");
-            window.location.href="?adminPage=videos";
+                document.addEventListener("DOMContentLoaded", () => {
+                    Swal.fire({
+                        text: "Data video berhasil diperbarui",
+                        icon: "success"
+                    }).then((result) => {
+                        window.location.href="?adminPage=videos";
+                    });
+                });
             </script>
-        ';
+            ';
 
     }
 }

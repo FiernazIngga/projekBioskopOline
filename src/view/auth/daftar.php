@@ -21,10 +21,18 @@
             }
         }
         if (isset($_SESSION['success']) && $_SESSION['success']) {
-            echo "<script>
-                    alert('Berhasil mendaftar');
-                    window.location.href = '?page=login';
-                </script>";
+            echo '
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Berhasil mendaftar"
+                        }).then(() => {
+                            window.location="?page=login";
+                        });
+                    });
+                </script>';
             unset($_SESSION['success']);
         }
         unset($_SESSION['error']); 

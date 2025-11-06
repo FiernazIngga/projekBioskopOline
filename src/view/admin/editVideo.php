@@ -55,7 +55,7 @@ function dataAwal()
                 <label>Genre:</label><br>
                 <input class="form-control" type="text" name="genre" value="<?= htmlspecialchars(dataAwal()['genre']) ?>"><br><br>
                 <label>Durasi (menit):</label><br>
-                <input class="form-control" type="number" name="durasi" value="<?= htmlspecialchars(dataAwal()['durasi']) ?>"><br><br>
+                <input class="form-control" type="text" name="durasi" value="<?= htmlspecialchars(dataAwal()['durasi']) ?>"><br><br>
                 <label>Role Akses:</label><br>
                 <select class="form-select" name="role">
                     <option value="Basic" <?= dataAwal()['role'] === 'Basic' ? 'selected' : '' ?>>Basic</option>
@@ -72,6 +72,7 @@ function dataAwal()
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    
 </body>
 
 </html>

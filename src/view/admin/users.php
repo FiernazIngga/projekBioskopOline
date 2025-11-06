@@ -42,7 +42,7 @@
 						</li>
 					</ul>
 					<div class="d-flex" role="search">
-						<a class="btn btn-outline-danger" href="?adminPage=logout">Logout</a>
+						<a class="btn btn-outline-danger" onclick="confirmLogout();">Logout</a>
 					</div>
 				</div>
 			</div>
@@ -58,6 +58,24 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
 		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    function confirmLogout() {
+        Swal.fire({
+            title: "Apakah kamu yakin ingin logout?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Ya, logout",
+            cancelButtonText: "Batal",
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "?adminPage=logout";
+            }
+        });
+	}
+	</script>
 </body>
 
 </html>
