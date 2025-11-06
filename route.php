@@ -15,6 +15,59 @@ switch ($page) {
 
     // Authentication
     case 'login':
+        if (isset($_SESSION['userLogin'])) {
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            $path = $base_url . "route.php?page=dashboardUser";
+            echo '
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                    Swal.fire({
+                        title: "Anda sudah login",
+                        text: "Pilih aksi Anda:",
+                        icon: "question",
+                        showDenyButton: true,
+                        confirmButtonText: "Logout",
+                        denyButtonText: "Cancel"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "?page=logout";
+                        } else if (result.isDenied) {
+                            window.location.href = "'.$path.'";
+                        }
+                    });
+                });
+            </script>
+            ';
+            exit();
+        }
+        if (isset($_SESSION['adminLogin'])) {
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            $path = $base_url . "routeAdmin.php?adminPage=admin123";
+            $logout = $base_url . "routeAdmin.php?adminPage=logout";
+            echo '
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    Swal.fire({
+                        title: "Anda sudah login",
+                        text: "Pilih aksi Anda:",
+                        icon: "question",
+                        showDenyButton: true,
+                        confirmButtonText: "Logout",
+                        denyButtonText: "Cancel"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "'.$logout.'";
+                        } else if (result.isDenied) {
+                            window.location.href = "'.$path.'";
+                        }
+                    });
+                });
+            </script>
+            ';
+            break;
+        }
         include "src/controllers/authControllers/loginController.php";
         include "src/view/auth/login.php";
         echo '<link rel="stylesheet" href="src/view/auth/authCss/login.css">';

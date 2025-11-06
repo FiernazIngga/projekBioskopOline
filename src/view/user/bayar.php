@@ -19,11 +19,18 @@
     $succes = null;
     $result = null;
 
+    $pwd = $connect->prepare("SELECT password FROM users WHERE id_user = ?");
+    $pwd->bind_param("s", $_SESSION['id_user']);
+    $pwd->execute();
+    $hasil = $pwd->get_result();
+    $data = $hasil->fetch_assoc();
+    $pwd->close();
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nominalUang = $_POST['nominalUang'] ?? 0;
         $passwordUser = $_POST['passwordUser'] ?? "";
 
-        if ($passwordUser !== $_SESSION['password']) {
+        if ($passwordUser !== $data['password']) {
             $succes = false;
             $error = "Password yang anda masukkan tidak sama";
         } else {
@@ -51,16 +58,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Bayar Paket</title>
     <link rel="stylesheet" href="?page=bayar">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <section id="bayar">
         <form method="post" action="?page=bayar&paket=<?= urlencode($role); ?>&root=<?= urlencode($id_user); ?>">
             <?php if (!$succes && $error) : ?>
-                <div class="alert alert-danger"><?= $error; ?></div>
+                <script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "<?= $error; ?>",
+                        text: "Something went wrong!"
+                    });
+                </script>
             <?php elseif($succes && $catatan): ?>
                 <script>
-                    alert(`<?= $catatan; ?>`);
-                    window.location.href = "?page=langganan";
+                    Swal.fire({
+                        icon: "success",
+                        title: "<?= $catatan; ?>"
+                    }).then(() => {
+                        window.location.href = "?page=langganan";
+                    });
                 </script>
             <?php endif; ?>
             <h1>Paket : <?= $role; ?></h1>

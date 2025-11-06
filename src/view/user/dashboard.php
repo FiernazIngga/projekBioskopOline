@@ -66,7 +66,7 @@
     <link rel="stylesheet" href="?page=dashboard">
 </head>
 
-<body>
+<body>  
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark wadahNavbar">
             <div class="container">
@@ -122,8 +122,7 @@
                                 <li>
                                     <hr class="pemisahDropdown">
                                 </li>
-                                <li><a class="dropdown-item itemDropdown" href="?page=logout"
-                                        onclick="return confirm('Apakah kamu yakin ingin logout?');">
+                                <li><a class="dropdown-item itemDropdown"onclick="confirmLogout();">
                                         <i class="fas fa-sign-out-alt me-2"></i> Keluar
                                     </a></li>
                             </ul>
@@ -209,6 +208,24 @@
         </script>
 
     <script src="?page=dashboardUser"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    function confirmLogout() {
+        Swal.fire({
+            title: "Apakah kamu yakin ingin logout?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Ya, logout",
+            cancelButtonText: "Batal",
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "?page=logout";
+            }
+        });
+    }
+    </script>
 </body>
 
 </html>
