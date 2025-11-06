@@ -59,8 +59,8 @@ $updateView->close();
 
     <h1 class="judulFilm"><?= htmlspecialchars($data['judul']) ?></h1>
 
-    <video controls 
-        poster="<?= $videoPath ?>" 
+    <video class="video-player" controls 
+        poster="<?= $thumbnailPath ?>" 
         controlsList="nodownload" 
         disablePictureInPicture>
         <source src="<?= $videoPath ?>" type="video/mp4">
