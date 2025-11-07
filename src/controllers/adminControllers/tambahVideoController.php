@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambahVideo'])) {
     $genre = $_POST['genre'];
     $durasi = $_POST['durasi'];
     $role = $_POST['role'];
+    $indexPencarian = $_POST['indexPencarian'];
 
     $letakVideo = folder("videos");
     $videoName = null;
@@ -50,13 +51,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambahVideo'])) {
 
     $queryMasukinVideo = $connect->prepare("
         INSERT INTO video 
-        (judul, sinopsis, genre, durasi, role, file_video, thumbnail, trailer)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        (judul, sinopsis, genre, durasi, role, file_video, thumbnail, trailer, indexPencarian)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     ");
     $queryMasukinVideo->bind_param(
-        "ssssssss", 
+        "sssssssss", 
         $judul, $sinopsis, $genre, $durasi, $role, 
-        $videoName, $thumbnailName, $trailerName
+        $videoName, $thumbnailName, $trailerName, $indexPencarian
     );
 
     $success = $queryMasukinVideo->execute() && $trailerM && $videoM && $tum;
@@ -65,16 +66,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambahVideo'])) {
     $connect->close();
 
     if ($success) {
-        echo "<script>
-            alert('Video berhasil ditambahkan!');
-            window.location.href='?adminPage=videos';
-        </script>";
+        echo '
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    Swal.fire({
+                        text: "Video berhasil ditambahkan",
+                        icon: "success"
+                    }).then((result) => {
+                        window.location.href="?adminPage=videos";
+                    });
+                });
+            </script>
+            ';
         exit;
     } else {
-        echo "<script>
-            alert('Video gagal ditambahkan!');
-            window.location.href='?adminPage=videos&aksi=tambah';
-        </script>";
+        echo '
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    Swal.fire({
+                        text: "Video gagal ditambahkan!",
+                        icon: "error"
+                    }).then((result) => {
+                        window.location.href="?adminPage=videos&aksi=tambah";
+                    });
+                });
+            </script>
+            ';
         exit;
     }
 }

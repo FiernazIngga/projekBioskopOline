@@ -177,6 +177,22 @@ switch ($page) {
         }
         include "src/controllers/userControllers/simpanBukuController.php";
         break;
+    case 'pencarian':
+        if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            header("Location: " . $base_url . "route.php?page=login");
+            exit();
+        }
+        include "src/controllers/userControllers/pencarianController.php";
+        break;
+    case 'cariBuku':
+        if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
+            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
+            header("Location: " . $base_url . "route.php?page=login");
+            exit();
+        }
+        include "src/controllers/userControllers/cariBuku.php";
+        break;
     default:
         echo "<h2>Halaman tidak ditemukan</h2>";
         break;

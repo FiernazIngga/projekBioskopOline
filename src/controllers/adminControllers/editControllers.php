@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         $genre     = $_POST['genre'] ?? '';
         $durasi    = $_POST['durasi'] ?? 0;
         $role      = $_POST['role'] ?? 'Basic';
+        $indexPencarian = $_POST['indexPencarian'] ?? '';
 
         $fileVideoUtama = $_FILES['fileVideoUtama'] ?? null;
         $fileThumbnail  = $_FILES['fileThumbnail'] ?? null;
@@ -69,8 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             $namaTrailerBaru = $dataLama['trailer'];
         }
 
-        $update = $connect->prepare("UPDATE video SET judul=?, sinopsis=?, file_video=?, thumbnail=?, genre=?, durasi=?, role=?, trailer=? WHERE id=?");
-        $update->bind_param("ssssssssi", $judul, $sinopsis, $namaVideoBaru, $namaThumbnailBaru, $genre, $durasi, $role, $namaTrailerBaru, $idVideo);
+        $update = $connect->prepare("UPDATE video SET judul=?, sinopsis=?, file_video=?, thumbnail=?, genre=?, durasi=?, role=?, trailer=?, indexPencarian=? WHERE id=?");
+        $update->bind_param("sssssssssi", $judul, $sinopsis, $namaVideoBaru, $namaThumbnailBaru, $genre, $durasi, $role, $namaTrailerBaru, $indexPencarian, $idVideo);
         $update->execute();
 
         echo '

@@ -128,6 +128,11 @@ function tambahVideo()
                 <input type="file" name="trailer" class="form-control" accept="video/*">
             </div>
 
+            <div class="mb-3">
+                <label>Index Pencarian</label>
+                <textarea name="indexPencarian" class="form-control" rows="3" required placeholder="Masukan kata kunci yang dapat membantu user mencari film, saran masukan yang banyak agar pengguna mudah menemukan film dari pencarian"></textarea>
+            </div>
+
             <button type="submit" name="tambahVideo" class="btn btn-primary w-100">Tambah Video</button>
         </form>
     </div>';

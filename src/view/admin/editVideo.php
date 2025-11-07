@@ -64,6 +64,7 @@ function dataAwal()
                 <label>Trailer (kosongkan jika tidak ingin ganti):</label><br>
                 <input class="form-control" type="file" name="trailer" accept="video/*"><br>
                 <small>File saat ini: <?= htmlspecialchars(basename(dataAwal()['trailer'])) ?></small><br><br>
+                <textarea class="form-control" name="indexPencarian" rows="3"><?= htmlspecialchars(dataAwal()['indexPencarian']) ?></textarea><br><br>
                 <button type="submit">Simpan Perubahan</button>
             </form>
             <a href="?adminPage=videos"><button>Batal</button></a>

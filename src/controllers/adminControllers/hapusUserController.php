@@ -17,18 +17,36 @@ if (isset($_GET['adminPage']) && $_GET['adminPage'] === 'hapusUser' && isset($_G
         $hapusUserRole->close();
         $hapusUser->close();
         $connect->close();
-        echo "<script>
-            alert('Data user berhasil dihapus!');
-            window.location.href='?adminPage=users';
-        </script>";
+        echo '
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    Swal.fire({
+                        text: "Data user berhasil dihapus!",
+                        icon: "success"
+                    }).then((result) => {
+                        window.location.href="?adminPage=users";
+                    });
+                });
+            </script>
+            ';
         exit;
     }
     $hapusUserRole->close();
     $hapusUser->close();
     $connect->close();
-    echo "<script>
-        alert('Data user tidak berhasil dihapus!');
-        window.location.href='?adminPage=users';
-    </script>";
+    echo '
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    Swal.fire({
+                        text: "Data user tidak berhasil dihapus!",
+                        icon: "error"
+                    }).then((result) => {
+                        window.location.href="?adminPage=users";
+                    });
+                });
+            </script>
+            ';
     exit;
 }

@@ -69,15 +69,33 @@
 }
 
 .kotakPencarian {
-    max-width: 280px;
+    width: 400px;
     position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.cariFilm {
+    width: 7em;
+    margin-left: 1em;
+    border: 1px solid red;
+    color: red;
+    border-radius: 10px;
+    background-color: #000;
+    transition: all .5s ease-in-out;
+}
+
+.cariFilm:hover {
+    width: 9em;
+    background-color: red;
+    color: #000;
 }
 
 .inputPencarian {
     background-color: #2d2d2d;
     border: 1px solid #444;
     color: white;
-    padding-left: 40px;
 }
 
 .inputPencarian:focus {
@@ -253,6 +271,10 @@
 }
 
 @media (max-width: 991.98px) {
+    .pencarianDanProfil {
+        display: flex;
+        flex-direction: column;
+    }
     .tautanNavigasi {
         margin: 5px 0;
         padding: 10px 15px;

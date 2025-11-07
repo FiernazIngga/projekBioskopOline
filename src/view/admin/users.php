@@ -75,6 +75,23 @@
             }
         });
 	}
+    function konfirmasiHapus(judul, url) {
+		Swal.fire({
+			title: `Hapus user "${judul}"?`,
+			text: "User yang dihapus tidak bisa dikembalikan!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonText: "Ya, hapus!",
+			cancelButtonText: "Batal",
+			confirmButtonColor: "#d33",
+			cancelButtonColor: "#3085d6"
+		}).then((result) => {
+			if (result.isConfirmed) {
+				window.location.href = url; 
+			}
+		});
+		return false; 
+	}
 	</script>
 </body>
 

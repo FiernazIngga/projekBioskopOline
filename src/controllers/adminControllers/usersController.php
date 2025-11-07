@@ -58,14 +58,18 @@ function ambilUsers() {
 
         $html .= "
             <tr>
-                <td class='text-center'>{$no}</td>
-                <td>{$nama}</td>
-                <td class='text-center'>{$username}</td>
-                <td>{$email}</td>
-                <td class='text-center'>{$role}</td>
-                <td class='text-center'>{$tanggal}</td>
+                <td class='text-center'>".$no."</td>
+                <td>".$nama."</td>
+                <td class='text-center'>".$username."</td>
+                <td>".$email."</td>
+                <td class='text-center'>".$role."</td>
+                <td class='text-center'>".$tanggal."</td>
                 <td class='text-center'>
-                    <a class='buttonHapus' href='?adminPage=hapusUser&user={$id}'>Hapus</a>
+                    <a href='?adminPage=hapusUser&user=".$id."' 
+                    class='buttonHapus' 
+                    onclick=\"return konfirmasiHapus('".addslashes($nama)."', this.href);\">
+                    Hapus
+                    </a>
                 </td>
             </tr>";
         $no++;

@@ -10,3 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
         ikonPencarian.style.color = "#aaa";
     });
 });
+
+const inputPencarian = document.querySelector('.inputPencarian');
+const containerFilm = document.querySelector('.containerFilm');
