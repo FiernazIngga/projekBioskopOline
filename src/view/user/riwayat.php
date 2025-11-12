@@ -5,6 +5,7 @@
     }
 
     include __DIR__ . "/../../controllers/userControllers/cekAuth.php";
+    include __DIR__ . "/../../controllers/userControllers/pencarianController.php";
 
     $idUser = $_SESSION['id_user'] ?? null;
     
@@ -34,7 +35,7 @@
 
         $tampil = "";
         if ($cek->num_rows === 0) {
-            $tampil = "<h1>Belum ada video</h1>";
+            $tampil = "<h1>Belum ada video yang anda tonton</h1>";
         } else {
             while ($hasil = $cek->fetch_assoc()) {
                 $tampil .= '
@@ -56,6 +57,19 @@
 
         $ambil->close();
         return $tampil;
+    }
+
+    $cekCari = "default";
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['keyword'])) {
+        $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : '';
+        if ($keyword === "") {
+            $cekCari = "default";
+        } else {
+            $cekCari = ambilPencarianRiwayat($keyword);
+            if ($cekCari === "error") {
+                $cekCari = "error"; 
+            }
+        }
     }
 
 ?> 
@@ -101,10 +115,11 @@
                     </li>
                 </ul>
                 <div class="d-flex align-items-center">
-                    <div class="kotakPencarian me-3">
-                        <i class="fas fa-search ikonPencarian"></i>
-                        <input type="text" class="form-control inputPencarian" placeholder="Cari film atau serial...">
-                    </div>
+                    <form action="?page=riwayat" method="post" class="kotakPencarian me-3">
+                        <input type="text" name="keyword" class="form-control inputPencarian"
+                            placeholder="Cari film atau serial...">
+                        <button class="cariFilm">Cari</button>
+                    </form>
                     <div class="dropdown">
                         <a class="dropdown-toggle no-arrow" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="<?= $foto; ?>" alt="Profil" class="gambarProfil">
@@ -131,10 +146,19 @@
     </nav>
 
     <section id="video">
-        <h1 class="judulSF">History film yang anda tonton</h1>
-        <div class="containerFilm">
-            <?= ambilSemuaFilm(); ?>
-        </div>
+        <?php if ($cekCari === "error") { ?>
+            <h1>Film tidak ditemukan</h1>
+        <?php } else if ($cekCari === "default") { ?>
+            <h1 class="judulSF">Nikmati Film Terbaru dan Keren</h1>
+            <div class="containerFilm">
+                <?= ambilSemuaFilm(); ?>
+            </div>
+        <?php } else { ?>
+            <h1 class="judulSF">Hasil Pencarian Anda</h1>
+            <div class="containerFilm">
+                <?= $cekCari; ?>
+            </div>
+        <?php } ?>
     </section>
 
     <section class="sikil" data-bs-theme="dark">
