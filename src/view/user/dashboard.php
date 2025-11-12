@@ -53,14 +53,22 @@
     }
 
     $cekCari = "default";
-    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['keyword'])) {
-        $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : '';
-        if ($keyword === "") {
-            $cekCari = "default";
-        } else {
-            $cekCari = ambilPencarian($keyword);
-            if ($cekCari === "error") {
-                $cekCari = "error"; 
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        if (isset($_POST['keyword'])) {
+            $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : '';
+            if ($keyword === "") {
+                $cekCari = "default";
+            } else {
+                $cekCari = ambilPencarian($keyword);
+                if ($cekCari === "error") {
+                    $cekCari = "error"; 
+                }
+            }
+        }
+        if (isset($_POST['genre'])) {
+            $tampilGenre = $_POST['genre']; 
+            if (!empty($tampilGenre)) {
+                $cekCari = ambilGenre($tampilGenre);
             }
         }
     }
@@ -81,7 +89,7 @@
 </head>
 
 <body>  
-    <header>
+    <header class="header">
         <nav class="navbar navbar-expand-lg navbar-dark wadahNavbar">
             <div class="container">
                 <a class="navbar-brand logoAplikasi" href="?page=dashboardUser">
@@ -98,10 +106,22 @@
                                 <i class="fas fa-home me-1"></i> Beranda
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link tautanNavigasi" href="?page=genre">
+                        <li class="nav-item genreBtn">
+                            <a class="nav-link tautanNavigasi" href="?page=dashboardUser&fitur=genre">
                                 <i class="fas fa-film me-1"></i> Genre
                             </a>
+                            <form method="POST" action="" class="genre">
+                                <h3>Pilih Genre:</h3>
+                                <label><input type="checkbox" name="genre[]" value="Action"> Action</label><br>
+                                <label><input type="checkbox" name="genre[]" value="Drama"> Drama</label><br>
+                                <label><input type="checkbox" name="genre[]" value="Comedy"> Comedy</label><br>
+                                <label><input type="checkbox" name="genre[]" value="Romance"> Romance</label><br>
+                                <label><input type="checkbox" name="genre[]" value="Horror"> Horror</label><br>
+                                <label><input type="checkbox" name="genre[]" value="Sci-Fi"> Sci-Fi</label><br>
+                                <label><input type="checkbox" name="genre[]" value="Thriller"> Thriller</label><br>
+                                <br>
+                                <button type="submit" name="filter">Tampilkan</button>
+                            </form>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link tautanNavigasi" href="?page=tandai">
@@ -194,6 +214,7 @@
                     class="visually-hidden">Next</span> </button>
         </div>
     </section>
+
 
     <section id="video">
         <?php if ($cekCari === "error") { ?>

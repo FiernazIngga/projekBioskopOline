@@ -102,16 +102,6 @@ switch ($page) {
         echo '<link rel="stylesheet" href="src/view/user/userCss/tandai.css">';
         echo '<script src="src/view/user/userJs/tandai.js"></script>';
         break;
-    case 'genre':
-        if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
-            $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
-            header("Location: " . $base_url . "route.php?page=login");
-            exit();
-        }
-        include "src/view/user/genre.php";
-        echo '<link rel="stylesheet" href="src/view/user/userCss/genre.css">';
-        echo '<script src="src/view/user/userJs/genre.js"></script>';
-        break;
     case 'riwayat':
         if (!isset($_SESSION['userLogin']) || !$_SESSION['userLogin']) {
             $base_url = "http://" . $_SERVER['HTTP_HOST'] . "/projekBioskop/";
