@@ -254,6 +254,18 @@
     color: white;
 }
 
+.Basic {
+    background-color: rgb(0, 153, 255);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.Premium {
+    text-align: center;
+    background-color: rgb(255, 166, 0);
+    border-radius: 10px;
+}
+
 .aksi {
     display: flex;
     justify-content: space-between;

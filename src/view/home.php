@@ -21,7 +21,6 @@ if ($videos->num_rows === 0) {
                     <img src="' . $path . '" alt="' . $dataVideo["judul"] . '" />
                     <div class="card-body text-center">
                         <h5 class="card-title">' . $dataVideo["judul"] . '</h5>
-                        <p class="card-text">Rating: ' . $dataVideo["rating"] . '</p>
                     </div>
                 </a>
             </div>
