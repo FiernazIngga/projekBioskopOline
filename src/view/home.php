@@ -104,7 +104,7 @@ $connect->close();
                 <!-- Anggota 1 -->
                 <div class="kartuAnggota">
                     <img src="https://i.pravatar.cc/150?img=1" alt="Affan Fiernaz" class="fotoAnggota">
-                    <h3>Abyaz Affan Zaky</h3>
+                    <h3>Abyaz AffanZaky S</h3>
                     <p>Frontend Developer</p>
                 </div>
 
