@@ -75,6 +75,8 @@ switch ($page) {
             break;
         }
         include "src/view/admin/editVideo.php";
+        echo '<link rel="stylesheet" href="src/view/admin/adminCss/videos.css">';
+        echo '<script src="src/view/admin/adminJs/videos.js"></script>';
         break;
     case 'logout':
         include "src/controllers/adminControllers/logoutController.php";

@@ -18,9 +18,13 @@ body {
     flex-direction: column;
     justify-content: center;
     overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.441);
+    background-blend-mode: darken;
 }
 
 #navbar {
+    background-color: rgba(0, 0, 0, 0.758);
+    background-blend-mode: darken;
     position: sticky;
     top: 0;
     z-index: 9999;

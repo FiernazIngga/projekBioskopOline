@@ -27,11 +27,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin_data`
 --
 
+DROP TABLE IF EXISTS `admin_data`;
 CREATE TABLE `admin_data` (
   `id_admin` int NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin_data`
@@ -46,12 +47,13 @@ INSERT INTO `admin_data` (`id_admin`, `username`, `password`) VALUES
 -- Table structure for table `riwayat`
 --
 
+DROP TABLE IF EXISTS `riwayat`;
 CREATE TABLE `riwayat` (
   `id_riwayat` int NOT NULL,
   `id_user` varchar(255) NOT NULL,
   `id_video` varchar(255) NOT NULL,
   `tanggal` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `riwayat`
@@ -67,12 +69,13 @@ INSERT INTO `riwayat` (`id_riwayat`, `id_user`, `id_video`, `tanggal`) VALUES
 -- Table structure for table `role`
 --
 
+DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
   `id_role` int NOT NULL,
   `id_user` varchar(255) NOT NULL,
-  `role_user` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Free',
+  `role_user` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'Free',
   `expired_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `role`
@@ -88,11 +91,12 @@ INSERT INTO `role` (`id_role`, `id_user`, `role_user`, `expired_at`) VALUES
 -- Table structure for table `simpan_film`
 --
 
+DROP TABLE IF EXISTS `simpan_film`;
 CREATE TABLE `simpan_film` (
   `id_simpan` int NOT NULL,
   `id_film` varchar(255) NOT NULL,
   `id_user` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `simpan_film`
@@ -110,6 +114,7 @@ INSERT INTO `simpan_film` (`id_simpan`, `id_film`, `id_user`) VALUES
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id_user` varchar(255) NOT NULL,
   `nama` varchar(100) NOT NULL,
@@ -117,7 +122,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `foto_profil` varchar(100) NOT NULL DEFAULT 'default.png'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -133,11 +138,12 @@ INSERT INTO `users` (`id_user`, `nama`, `username`, `password`, `email`, `foto_p
 -- Table structure for table `video`
 --
 
+DROP TABLE IF EXISTS `video`;
 CREATE TABLE `video` (
   `id` int NOT NULL,
   `judul` varchar(255) NOT NULL,
-  `sinopsis` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `file_video` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `sinopsis` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `file_video` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `thumbnail` varchar(255) DEFAULT NULL,
   `genre` varchar(100) DEFAULT NULL,
   `durasi` varchar(20) DEFAULT NULL,
@@ -148,7 +154,7 @@ CREATE TABLE `video` (
   `rating` int DEFAULT '0',
   `trailer` varchar(255) DEFAULT NULL,
   `indexPencarian` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `video`

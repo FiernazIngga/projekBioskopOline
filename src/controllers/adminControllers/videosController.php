@@ -1,141 +1,141 @@
-<?php 
+    <?php 
 
-include __DIR__ . "/../../databases/koneksi.php";
+    include __DIR__ . "/../../databases/koneksi.php";
 
-function ambilVideo() {
-    global $connect;
+    function ambilVideo() {
+        global $connect;
 
-    $konekDb = $connect->prepare("SELECT * FROM video");
-    $konekDb->execute();
-    $hasil = $konekDb->get_result();
+        $konekDb = $connect->prepare("SELECT * FROM video");
+        $konekDb->execute();
+        $hasil = $konekDb->get_result();
 
-    if ($hasil->num_rows === 0) {
-        $konekDb->close(); 
-        return '
-        <div class="alert alert-warning text-center mt-4">
-            Belum ada video yang diupload.
-        </div>';
-    }
+        if ($hasil->num_rows === 0) {
+            $konekDb->close(); 
+            return '
+            <div class="alert alert-warning text-center mt-4">
+                Belum ada video yang diupload.
+            </div>';
+        }
 
-    $html = '
-    <div class="containerTampil mt-4">
-        <h3 class="mb-3 text-center">Daftar Video</h3>
-        <table class="table-hover">
-            <thead class="text-center">
+        $html = '
+        <div class="containerTampil mt-4">
+            <h2 class="mb-3 text-center text-white">Daftar Video</h2>
+            <table class="table-hover table-dark">
+                <thead class="text-center">
+                    <tr>
+                        <th>No</th>
+                        <th>Judul</th>
+                        <th>Tanggal Upload</th>
+                        <th>Role</th>
+                        <th>Jumlah View</th>
+                        <th>Jumlah Rating</th>
+                        <th>Rating</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>';
+
+        $no = 1;
+        while ($video = $hasil->fetch_assoc()) {
+            $id = $video['id'];
+            $judul = htmlspecialchars($video["judul"]);
+            $tanggal = date("d M Y", strtotime($video["tanggal_upload"]));
+            $role = htmlspecialchars($video["role"]);
+            $view = number_format($video["jumlah_view"]);
+            $like = number_format($video["jumlah_perating"]);
+            $rating = $video["rating"];
+            $file = htmlspecialchars($video["file_video"]);
+
+            $videoPath = "src/uploads/videos/" . $file;
+
+            $html .= '
                 <tr>
-                    <th>No</th>
-                    <th>Judul</th>
-                    <th>Tanggal Upload</th>
-                    <th>Role</th>
-                    <th>Jumlah View</th>
-                    <th>Jumlah Rating</th>
-                    <th>Rating</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>';
-
-    $no = 1;
-    while ($video = $hasil->fetch_assoc()) {
-        $id = $video['id'];
-        $judul = htmlspecialchars($video["judul"]);
-        $tanggal = date("d M Y", strtotime($video["tanggal_upload"]));
-        $role = htmlspecialchars($video["role"]);
-        $view = number_format($video["jumlah_view"]);
-        $like = number_format($video["jumlah_perating"]);
-        $rating = $video["rating"];
-        $file = htmlspecialchars($video["file_video"]);
-
-        $videoPath = "src/uploads/videos/" . $file;
+                    <td class="text-center">'.$no.'</td>
+                    <td>'.$judul.'</td>
+                    <td class="text-center">'.$tanggal.'</td>
+                    <td class="text-center">'.$role.'</td>
+                    <td class="text-center">'.$view.'</td>
+                    <td class="text-center">'.$like.'</td>
+                    <td class="text-center">'.$rating.'/5</td>
+                    <td class="text-center">
+                        <a href="?adminPage=hapusVideo&video='.$id.'" 
+                        class="btn btn-outline-danger" 
+                        onclick="return konfirmasiHapus(\''.addslashes($judul).'\', this.href);">
+                        Hapus
+                        </a>
+                        <a class="btn btn-outline-warning" href="?adminPage=editVideo&idVideo='.$id.'">Edit</a>
+                    </td>
+                </tr>';
+            $no++;
+        }
 
         $html .= '
-            <tr>
-                <td class="text-center">'.$no.'</td>
-                <td>'.$judul.'</td>
-                <td class="text-center">'.$tanggal.'</td>
-                <td class="text-center">'.$role.'</td>
-                <td class="text-center">'.$view.'</td>
-                <td class="text-center">'.$like.'</td>
-                <td class="text-center">'.$rating.'/5</td>
-                <td class="text-center">
-                    <a href="?adminPage=hapusVideo&video='.$id.'" 
-                    class="buttonHapus" 
-                    onclick="return konfirmasiHapus(\''.addslashes($judul).'\', this.href);">
-                    Hapus
-                    </a>
-                    <a class="buttonHapus" href="?adminPage=editVideo&idVideo='.$id.'">Edit</a>
-                </td>
-            </tr>';
-        $no++;
+                </tbody>
+            </table>
+        </div>';
+
+        $konekDb->close();
+
+        return $html;
     }
 
-    $html .= '
-            </tbody>
-        </table>
-    </div>';
+    function tambahVideo()
+    {
+        $form = '
+        <div class="container mt-4">
+            <h3 class="text-center mb-4 text-white">Tambah Video Baru</h3>
+            <form method="POST" enctype="multipart/form-data" class="p-4 border rounded shadow-sm bg-light" action="?adminPage=tambahVideo">
+                <div class="mb-3">
+                    <label>Judul Video</label>
+                    <input type="text" name="judul" class="form-control" required>
+                </div>
 
-    $konekDb->close();
+                <div class="mb-3">
+                    <label>Sinopsis</label>
+                    <textarea name="sinopsis" class="form-control" rows="3"></textarea>
+                </div>
 
-    return $html;
-}
+                <div class="mb-3">
+                    <label>File Video Utama (MP4, MKV, dsb)</label>
+                    <input type="file" name="video" class="form-control" accept="video/*" required>
+                </div>
 
-function tambahVideo()
-{
-    $form = '
-    <div class="container mt-4">
-        <h3 class="text-center mb-4">Tambah Video Baru</h3>
-        <form method="POST" enctype="multipart/form-data" class="p-4 border rounded shadow-sm bg-light" action="?adminPage=tambahVideo">
-            <div class="mb-3">
-                <label>Judul Video</label>
-                <input type="text" name="judul" class="form-control" required>
-            </div>
+                <div class="mb-3">
+                    <label>Thumbnail (Gambar)</label>
+                    <input type="file" name="thumbnail" class="form-control" accept="image/*" required>
+                </div>
 
-            <div class="mb-3">
-                <label>Sinopsis</label>
-                <textarea name="sinopsis" class="form-control" rows="3"></textarea>
-            </div>
+                <div class="mb-3">
+                    <label>Genre</label>
+                    <input type="text" name="genre" class="form-control">
+                </div>
 
-            <div class="mb-3">
-                <label>File Video Utama (MP4, MKV, dsb)</label>
-                <input type="file" name="video" class="form-control" accept="video/*" required>
-            </div>
+                <div class="mb-3">
+                    <label>Durasi (contoh: 12:45)</label>
+                    <input type="text" name="durasi" class="form-control">
+                </div>
 
-            <div class="mb-3">
-                <label>Thumbnail (Gambar)</label>
-                <input type="file" name="thumbnail" class="form-control" accept="image/*" required>
-            </div>
+                <div class="mb-3">
+                    <label>Role Akses</label>
+                    <select name="role" class="form-select">
+                        <option value="Basic">Basic</option>
+                        <option value="Premium">Premium</option>
+                    </select>
+                </div>
 
-            <div class="mb-3">
-                <label>Genre</label>
-                <input type="text" name="genre" class="form-control">
-            </div>
+                <div class="mb-3">
+                    <label>Trailer (opsional, video pendek)</label>
+                    <input type="file" name="trailer" class="form-control" accept="video/*">
+                </div>
 
-            <div class="mb-3">
-                <label>Durasi (contoh: 12:45)</label>
-                <input type="text" name="durasi" class="form-control">
-            </div>
+                <div class="mb-3">
+                    <label>Index Pencarian</label>
+                    <textarea name="indexPencarian" class="form-control" rows="3" required placeholder="Masukan kata kunci yang dapat membantu user mencari film, saran masukan yang banyak agar pengguna mudah menemukan film dari pencarian"></textarea>
+                </div>
 
-            <div class="mb-3">
-                <label>Role Akses</label>
-                <select name="role" class="form-select">
-                    <option value="Basic">Basic</option>
-                    <option value="Premium">Premium</option>
-                </select>
-            </div>
-
-            <div class="mb-3">
-                <label>Trailer (opsional, video pendek)</label>
-                <input type="file" name="trailer" class="form-control" accept="video/*">
-            </div>
-
-            <div class="mb-3">
-                <label>Index Pencarian</label>
-                <textarea name="indexPencarian" class="form-control" rows="3" required placeholder="Masukan kata kunci yang dapat membantu user mencari film, saran masukan yang banyak agar pengguna mudah menemukan film dari pencarian"></textarea>
-            </div>
-
-            <button type="submit" name="tambahVideo" class="btn btn-primary w-100">Tambah Video</button>
-        </form>
-    </div>';
-    
-    return $form;
-}
+                <button type="submit" name="tambahVideo" class="btn btn-primary w-100">Tambah Video</button>
+            </form>
+        </div>';
+        
+        return $form;
+    }

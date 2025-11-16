@@ -177,12 +177,11 @@
             <div class="carousel-inner">
                 <div class="carousel-item ">
                     <img src="https://i0.wp.com/2.bp.blogspot.com/-UQUJKUj3SIc/UYj6MV2tK0I/AAAAAAAAASc/x16Cc_TSZ-g/s1600/FF6%2BDurtch%2BPoster.jpg"
-                        class="d-block w-100" alt="Cars 3">
+                        class="d-block w-100 " alt="Cars 3">
                     <div class="container">
-                        <div class="carousel-caption text-start">
-                            <h1>Example headline.</h1>
-                            <p class="opacity-75">Some representative placeholder content for the first slide of the
-                                carousel.</p>
+                        <div class="carousel-caption text-end  ">
+                            <h1>Info Kopag.</h1>
+                            <p class="opacity-75">Yo ndak tau kok tanya saya.</p>
                         </div>
                     </div>
                 </div>
@@ -191,18 +190,18 @@
                         alt="Cars 3">
                     <div class="container">
                         <div class="carousel-caption">
-                            <h1>Another example headline.</h1>
-                            <p>Some representative placeholder content for the second slide of the carousel.</p>
+                            <h1>Kopag lagi.</h1>
+                            <p>Info ijazah jokowi.</p>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item ">
                     <img src="https://images.squarespace-cdn.com/content/v1/57d4cbcb9f7456b185ce057b/1508820292576-QZ5YO8C2JPEZ6M8K1YQO/C3_banner.jpg"
-                        class="d-block w-100" alt="Cars 3">
+                        class="d-block w-100 " alt="Cars 3">
                     <div class="container">
                         <div class="carousel-caption text-end">
-                            <h1>One more for good measure.</h1>
-                            <p>Some representative placeholder content for the third slide of this carousel.</p>
+                            <h1>Aku suka Kopag.</h1>
+                            <p>Anak haram konstitusi.</p>
                         </div>
                     </div>
                 </div>

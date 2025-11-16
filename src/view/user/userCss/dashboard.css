@@ -6,12 +6,20 @@
     z-index: 9999;
 }
 
+.sikil{
+    background-color: black;
+    color: white;
+}
 .logoAplikasi {
     font-weight: bold;
     color: #e50914;
     font-size: 1.5rem;
 }
-
+.carousel-item img {
+    height: 500px;        
+    object-fit:cover;    
+    object-position:top;
+}
 .tautanNavigasi {
     font-weight: 500;
     color: #ffffff;

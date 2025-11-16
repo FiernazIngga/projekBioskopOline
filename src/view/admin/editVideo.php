@@ -37,9 +37,9 @@ function dataAwal()
 </head>
 
 <body>
-    <h1 class="text-center">Edit Video</h1>
-    <div class="container">
-        <div class="p-4 mb-4 border rounded-4 shadow-sm bg-light">
+    <div class="container mt-4">
+        <h1 class="text-center mb-4 text-white">Edit Video</h1>
+        <div class="p-4 mb-4 border rounded-2 shadow-sm bg-light">
             <form action="?adminPage=editVideoControllers&idVideo=<?= $id; ?>" method="post"
                 enctype="multipart/form-data">
                 <label>Judul Video:</label><br>
@@ -66,9 +66,9 @@ function dataAwal()
                 <small>File saat ini: <?= htmlspecialchars(basename(dataAwal()['trailer'])) ?></small><br><br>
                 <textarea class="form-control" name="indexPencarian" rows="3"><?= htmlspecialchars(dataAwal()['indexPencarian']) ?></textarea><br><br>
                 <button class='btn btn-outline-primary'type="submit">Simpan Perubahan</button>
+                <a href="?adminPage=videos" class='btn btn-outline-danger'>Batal</a>
             </form>
             <br>
-            <a href="?adminPage=videos"><button class='btn btn-outline-danger'>Batal</button></a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

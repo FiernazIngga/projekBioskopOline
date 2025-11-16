@@ -32,7 +32,7 @@ function ambilUsers() {
 
     $html = '
     <div class="containerTampil mt-4">
-        <h3 class="mb-3 text-center">Daftar Users</h3>
+        <h3 class="mb-4 text-center text-white">Daftar Users</h3>
         <table class="table-hover">
             <thead class="text-center">
                 <tr>
@@ -66,7 +66,7 @@ function ambilUsers() {
                 <td class='text-center'>".$tanggal."</td>
                 <td class='text-center'>
                     <a href='?adminPage=hapusUser&user=".$id."' 
-                    class='buttonHapus' 
+                    class='btn btn btn-outline-danger' 
                     onclick=\"return konfirmasiHapus('".addslashes($nama)."', this.href);\">
                     Hapus
                     </a>
