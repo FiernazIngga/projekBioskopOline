@@ -231,7 +231,7 @@
         <?php } ?>
     </section>
 
-     <section class="sikil" data-bs-theme="dark">
+    <section class="sikil" data-bs-theme="dark">
         <div class="container">
             <footer class="py-5">
                 <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
