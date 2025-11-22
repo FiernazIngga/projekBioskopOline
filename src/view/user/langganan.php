@@ -84,9 +84,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Rp. 100.000,00 / Month</h5>
                     <p class="card-text">
-                        <span>✅ Akses video umum</span><br>
-                        <span>❌ Early akses</span><br>
-                        <span>❌ Kustomisasi player</span>
+                        <span>✅ Akses video umum terbatas</span><br>
                     </p>
                     <div class="tombolPaket">
                         <button onclick="langganan('Basic', '<?= $_SESSION['id_user']; ?>')" class="btn btn-primary">Langganan</button>
@@ -98,9 +96,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Rp. 200.000,00 / Month</h5>
                     <p class="card-text">
-                        <span>✅ Akses video umum</span><br>
-                        <span>✅ Early akses</span><br>
-                        <span>✅ Kustomisasi player</span>
+                        <span>✅ Akses video tanpa batas</span><br>
                     </p>
                     <div class="tombolPaket">
                         <button onclick="langganan('Premium', '<?= $_SESSION['id_user']; ?>')" class="btn btn-primary">Langganan</button>
