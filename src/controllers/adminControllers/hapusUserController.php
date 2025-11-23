@@ -13,7 +13,7 @@ if (isset($_GET['adminPage']) && $_GET['adminPage'] === 'hapusUser' && isset($_G
     $hapusUserRole->bind_param("s", $idUser);
     $hapusUserRole->execute();
 
-    if ($hapusUser->affected_rows > 0 && $hapusUserRole->affected_rows > 0) {
+    if ($hapusUser->affected_rows > 0 || $hapusUserRole->affected_rows > 0) {
         $hapusUserRole->close();
         $hapusUser->close();
         $connect->close();
