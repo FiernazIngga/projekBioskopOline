@@ -1,5 +1,5 @@
 .wadahNavbar {
-    background-color: #1a1a1a;
+    background-color: #000000;
     padding: 12px 0;
     position: sticky;
     top: 0;
@@ -76,6 +76,11 @@
     display: none !important;
 }
 
+#isi .card {
+    background-color: rgba(0, 0, 0, 0.315); 
+    backdrop-filter: blur(4px); 
+}
+
 .card {
     margin: 2em;
     border-radius: 5%;
@@ -89,18 +94,32 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
+.card-title{
+    color: white;
+}
+.card-text{
+    color: white;
+}
 .keterangan {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 4em;
-    background-color: rgb(210, 126, 30);
+    height: 5em;
+    background: radial-gradient(
+        rgb(215, 171, 69),
+        rgba(255, 145, 0, 0.756)
+    );
+    backdrop-filter: blur(4px); 
     font-weight: 800;
     color: white;
     font-size: xx-large;
 }
 
 #isi {
+    background: url('/projekBioskop/src/view/background_langganan.jpeg') center/cover no-repeat;
+    background-color: #00000033;
+    background-blend-mode: darken;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -109,11 +128,12 @@
     min-height: 100dvh;
     width: 100%;
     border: 1px solid black;
+    color: white;
 }
 
 #isi h1 {
     margin-bottom: 1.5em;
-    color: #222;
+    color: #ffffff;
     font-weight: 700;
 }
 

@@ -41,28 +41,38 @@ if (isset($_SESSION['message'])) {
     $icon = "";
     if ($_SESSION['message'] === "saved") {
         $icon = "success";
-        $kata = "Berhasil menyimpan buku";
+        $kata = "Berhasil menyimpan film";
         $tanda = "src/uploads/icon/bookmarkblack.png";
     } else if ($_SESSION['message'] === "error") {
         $icon = "error";
-        $kata = "Gagal menyimpan buku";
+        $kata = "Gagal menyimpan film";
         $tanda = "src/uploads/icon/bookmarkwhite.png";
     } else if ($_SESSION['message'] === "removed") {
         $icon = "success";
-        $kata = "Berhasil menghapus buku dari simpan buku";
+        $kata = "Berhasil menghapus film dari simpan film";
         $tanda = "src/uploads/icon/bookmarkwhite.png";
     }
-    echo '
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                Swal.fire({
-                    icon: "'.$icon.'",
-                    title: "'.$kata.'"
-                });
-            });
-        </script>
-    ';
+  echo '
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    Swal.fire({
+        icon: "'.$icon.'",
+        title: "'.$kata.'",
+        buttonsStyling: false,
+        theme: "dark",
+        confirmButtonText: "OK",
+        customClass: {
+            confirmButton: "btn btn-danger",
+           
+        }
+    });
+});
+</script>
+';
+
     unset($_SESSION['message']);
 }
 
@@ -100,7 +110,7 @@ if (isset($_GET['kembali']) && $_GET['kembali'] === "cek") {
 
         <div class="infoFilm">
             <h1 class="judulFilm"><?= htmlspecialchars($data['judul']); ?></h1>
-            <div class="ratingFilm">⭐ Rating: <?= htmlspecialchars($data['rating']); ?></div>
+            
 
             <div class="infoTambahan">
                 <p><strong>Durasi:</strong> <?= htmlspecialchars($data['durasi']); ?> menit</p>
