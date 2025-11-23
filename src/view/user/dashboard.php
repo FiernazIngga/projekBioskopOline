@@ -107,9 +107,9 @@
                             </a>
                         </li>
                         <li class="nav-item genreBtn">
-                            <a class="nav-link tautanNavigasi" href="?page=dashboardUser&fitur=genre">
+                            <div class="nav-link tautanNavigasi" style="cursor: default;">
                                 <i class="fas fa-film me-1"></i> Genre
-                            </a>
+                            </div>
                             <form method="POST" action="" class="genre">
                                 <h3>Pilih Genre:</h3>
                                 <label><input type="checkbox" name="genre[]" value="Action"> Action</label><br>
