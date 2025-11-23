@@ -28,8 +28,6 @@
                         <th>Tanggal Upload</th>
                         <th>Role</th>
                         <th>Jumlah View</th>
-                        <th>Jumlah Rating</th>
-                        <th>Rating</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
