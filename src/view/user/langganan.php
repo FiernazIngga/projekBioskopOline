@@ -38,7 +38,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark wadahNavbar">
         <div class="container">
-            <a class="navbar-brand logoAplikasi" href="?page=dashboardUser">Kembali</a>
+            <a class="navbar-brand logoAplikasi" href="?page=dashboardUser"> Kembali</a>
             <button class="navbar-toggler tombolToggle" type="button" data-bs-toggle="collapse"
                 data-bs-target="#menuUtama">
                 <span class="navbar-toggler-icon"></span>
@@ -80,13 +80,13 @@
         <h1>Pilih Paket</h1>
         <div class="paket">
             <div class="card" style="width: 18rem;">
-                <div class="keterangan">BASIC</div>
+                <div class="keterangan">
+                <i class="fa fa-film fa-3x" aria-hidden="true"></i>
+                BASIC</div>
                 <div class="card-body">
                     <h5 class="card-title">Rp. 100.000,00 / Month</h5>
                     <p class="card-text">
-                        <span>✅ Akses video umum</span><br>
-                        <span>❌ Early akses</span><br>
-                        <span>❌ Kustomisasi player</span>
+                        <span>✅ Akses video umum terbatas</span><br>
                     </p>
                     <div class="tombolPaket">
                         <button onclick="langganan('Basic', '<?= $_SESSION['id_user']; ?>')" class="btn btn-primary">Langganan</button>
@@ -94,13 +94,13 @@
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
-                <div class="keterangan">PREMIUM</div>
+                <div class="keterangan">
+                  <i class="fa fa-film fa-3x" aria-hidden="true"></i>    
+                PREMIUM</div>
                 <div class="card-body">
                     <h5 class="card-title">Rp. 200.000,00 / Month</h5>
                     <p class="card-text">
-                        <span>✅ Akses video umum</span><br>
-                        <span>✅ Early akses</span><br>
-                        <span>✅ Kustomisasi player</span>
+                        <span>✅ Akses video tanpa batas</span><br>
                     </p>
                     <div class="tombolPaket">
                         <button onclick="langganan('Premium', '<?= $_SESSION['id_user']; ?>')" class="btn btn-primary">Langganan</button>
@@ -125,7 +125,8 @@
             confirmButtonText: "Ya, logout",
             cancelButtonText: "Batal",
             confirmButtonColor: "#d33",
-            cancelButtonColor: "#3085d6"
+            cancelButtonColor: "#3085d6",
+            theme : "dark"
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = "?page=logout";

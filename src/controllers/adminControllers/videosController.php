@@ -28,8 +28,6 @@
                         <th>Tanggal Upload</th>
                         <th>Role</th>
                         <th>Jumlah View</th>
-                        <th>Jumlah Rating</th>
-                        <th>Rating</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -41,8 +39,8 @@
             $judul = htmlspecialchars($video["judul"]);
             $tanggal = date("d M Y", strtotime($video["tanggal_upload"]));
             $role = htmlspecialchars($video["role"]);
-            $view = number_format($video["jumlah_view"]);
-            $like = number_format($video["jumlah_perating"]);
+            // $view = number_format($video["jumlah_view"]);
+            // $like = number_format($video["jumlah_perating"]);
             $rating = $video["rating"];
             $file = htmlspecialchars($video["file_video"]);
 
@@ -54,8 +52,7 @@
                     <td>'.$judul.'</td>
                     <td class="text-center">'.$tanggal.'</td>
                     <td class="text-center">'.$role.'</td>
-                    <td class="text-center">'.$view.'</td>
-                    <td class="text-center">'.$like.'</td>
+                   
                     <td class="text-center">'.$rating.'/5</td>
                     <td class="text-center">
                         <a href="?adminPage=hapusVideo&video='.$id.'" 

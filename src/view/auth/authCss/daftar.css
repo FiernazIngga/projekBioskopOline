@@ -11,7 +11,7 @@
 
 body {
     /* background-color: #0f0e17; */
-    background-color: white;
+    background-color: #170e0e;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -20,18 +20,18 @@ body {
 }
 
 .kotakDaftar {
-    background-color: rgb(211, 211, 211);
+    background-color: rgba(216, 215, 215, 0.223);
     border-radius: 15px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 450px;
+    max-width: 400px;
     padding: 40px;
 }
 
 .judulHalaman {
     text-align: center;
     margin-bottom: 30px;
-    color: #333;
+    color: #ffffff;
     font-size: 28px;
     font-weight: 600;
 }
@@ -44,7 +44,7 @@ body {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
-    color: #555;
+    color: #ffffff;
 }
 
 .inputText {
@@ -64,7 +64,7 @@ body {
 .tombolSubmit {
     width: 100%;
     padding: 14px;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: linear-gradient(to right, #902828, #f01a1a);
     color: white;
     border: none;
     border-radius: 8px;
@@ -83,7 +83,7 @@ body {
 .teksKecil {
     text-align: center;
     margin-top: 20px;
-    color: #777;
+    color: #ffffff;
 }
 
 .linkTeks {

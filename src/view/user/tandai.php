@@ -187,7 +187,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['keyword'])) {
             confirmButtonText: "Ya, logout",
             cancelButtonText: "Batal",
             confirmButtonColor: "#d33",
-            cancelButtonColor: "#3085d6"
+            cancelButtonColor: "#3085d6",
+            theme : "dark"
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = "?page=logout";
