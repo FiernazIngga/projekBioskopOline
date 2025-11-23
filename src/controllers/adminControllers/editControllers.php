@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
                 document.addEventListener("DOMContentLoaded", () => {
                     Swal.fire({
                         text: "Data video berhasil diperbarui",
-                        icon: "success"
+                        icon: "success",
                     }).then((result) => {
                         window.location.href="?adminPage=videos";
                     });

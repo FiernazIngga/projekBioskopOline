@@ -84,7 +84,7 @@ $connect->close();
 
     <section class="tranding" id="showVideo">
         <div class="containerTre">
-            <h2>Sedang Trending</h2>
+            <h2>Film Terbaru</h2>
             <div class="row justify-content-center g-4">
             <?= $tampilVideo; ?>
             </div>
