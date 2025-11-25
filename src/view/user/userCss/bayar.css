@@ -1,13 +1,23 @@
 body {
+    background: url('/projekBioskop/src/view/background_langganan.jpeg') center/cover no-repeat;
+    background-color: #00000033;
+    background-blend-mode: darken;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100dvh;
-}
+    flex-direction: column;
+    height: auto;
+    min-height: 100dvh;
+    width: 100%;
+    border: 1px solid black;
+    color: white;
+    display: flex;
+}   
 
 #bayar {
+    background-color: rgba(0, 0, 0, 0.39);
     width: 30em;
-    border: 1px solid black;
+    border: 1px solid rgba(255, 255, 255, 0.448);
     padding: 2em;
     border-radius: 5%;
 }

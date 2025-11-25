@@ -11,31 +11,40 @@
     <div class="kotakLogin">
         <h1 class="judulHalaman">Masuk ke Akun</h1>
 
-        <?php 
-            if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-            }
-            if (isset($_SESSION['error'])) {
-                if (is_array($_SESSION['error'])) {
-                    foreach ($_SESSION['error'] as $err) {
-                        echo "<div class='pesanError'>$err</div>";
-                    }
-                } else {
-                    echo "<div class='pesanError'>{$_SESSION['error']}</div>";
+        <?php
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $username_cookie = isset($_COOKIE['username']) ? $_COOKIE['username'] : '';
+        $password_cookie = isset($_COOKIE['password']) ? $_COOKIE['password'] : '';
+
+        if (isset($_SESSION['error'])) {
+            if (is_array($_SESSION['error'])) {
+                foreach ($_SESSION['error'] as $err) {
+                    echo "<div class='pesanError'>$err</div>";
                 }
-                unset($_SESSION['error']);
+            } else {
+                echo "<div class='pesanError'>{$_SESSION['error']}</div>";
             }
+            unset($_SESSION['error']);
+        }
         ?>
 
         <form method="POST" action="?page=login">
             <div class="kelompokInput">
                 <label class="labelInput" for="username">Username</label>
-                <input type="text" id="username" name="username" class="inputText" placeholder="Masukkan username Anda" required>
+                <input type="text" id="username" name="username" class="inputText" placeholder="Masukkan username Anda"
+                value="<?=htmlspecialchars($username_cookie)?>" required>
             </div>
             <div class="kelompokInput">
                 <label class="labelInput" for="password">Password</label>
                 <input type="password" id="password" name="password" class="inputText"
-                    placeholder="Masukkan password Anda" required>
+                    placeholder="Masukkan password Anda" value="<?=htmlspecialchars($password_cookie)?>" required>
+            </div>
+            <div class="kelompokInput">
+                <input type="checkbox" name="ingat" id="ingat">
+                Remember me
             </div>
             <button type="submit" class="tombolSubmit">Masuk</button>
             <p class="teksKecil">

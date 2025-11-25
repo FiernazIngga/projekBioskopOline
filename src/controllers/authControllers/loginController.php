@@ -106,6 +106,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['role_user'] = $user_role['role_user'];
 
     $connect->close(); 
+    if (isset($_POST['ingat'])) {
+        
+        setcookie('username',$username, time()+60,'/');
+        setcookie('password',$password, time()+60,'/');
+    }
     header('Location: ?page=dashboardUser');
+    
     exit;
 }

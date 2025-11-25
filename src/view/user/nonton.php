@@ -20,7 +20,7 @@ $data = $result->fetch_assoc();
 $stmt->close();
 
 if ($_SESSION['role_user'] === "Free" || $_SESSION['role_user'] === "Basic" && $data['role'] === "Premium") {
-    echo '
+    echo 'a
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             document.addEventListener("DOMContentLoaded", () => {
