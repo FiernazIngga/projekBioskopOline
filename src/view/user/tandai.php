@@ -116,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['keyword'])) {
                 <div class="d-flex align-items-center">
                     <form action="?page=tandai" method="post" class="kotakPencarian me-3">
                         <input type="text" name="keyword" class="form-control inputPencarian"
-                            placeholder="Cari film atau serial...">
+                            placeholder="Cari film ditandai berdasarkan judul...">
                         <button class="cariFilm">Cari</button>
                     </form>
                     <div class="dropdown">

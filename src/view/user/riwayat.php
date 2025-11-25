@@ -117,7 +117,7 @@
                 <div class="d-flex align-items-center">
                     <form action="?page=riwayat" method="post" class="kotakPencarian me-3">
                         <input type="text" name="keyword" class="form-control inputPencarian"
-                            placeholder="Cari film atau serial...">
+                            placeholder="Cari riwayat film berdasarkan judul...">
                         <button class="cariFilm">Cari</button>
                     </form>
                     <div class="dropdown">

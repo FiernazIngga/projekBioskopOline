@@ -44,27 +44,30 @@ function ambilPencarian($keyword) {
 function ambilPencarianTandai($keyword) {
     $id_user = $_SESSION['id_user'];
     global $connect;
+
     $sql = "
         SELECT 
             v.*, 
             u.id_user, 
             u.username, 
-            sf.id_film AS film_disimpan,
-            MATCH(v.judul, v.sinopsis, v.genre)
-                AGAINST (? IN NATURAL LANGUAGE MODE) AS skor
+            sf.id_film AS film_disimpan
         FROM video v
-        INNER JOIN simpan_film sf ON v.id = sf.id_film
-        INNER JOIN users u ON sf.id_user = u.id_user
-        WHERE u.id_user = ?
-        AND MATCH(v.judul, v.sinopsis, v.genre)
-            AGAINST (? IN NATURAL LANGUAGE MODE)
-        ORDER BY skor DESC;
+        INNER JOIN simpan_film sf 
+            ON v.id = sf.id_film AND sf.id_user = ?
+        INNER JOIN users u 
+            ON sf.id_user = u.id_user
+        WHERE v.judul LIKE ?
+        ORDER BY v.judul ASC;
     ";
+
     $ambil = $connect->prepare($sql);
-    $ambil->bind_param("sis", $keyword, $id_user, $keyword);
+    $like = "%{$keyword}%";
+
+    $ambil->bind_param("is", $id_user, $like);
     $ambil->execute();
     $hasil = $ambil->get_result();
     $ambil->close();
+
     $isi = "";
     if ($hasil->num_rows > 0) {
         while ($row = $hasil->fetch_assoc()) {
@@ -133,27 +136,30 @@ function ambilGenre($kumpGenre) {
 function ambilPencarianRiwayat($keyword) {
     $id_user = $_SESSION['id_user'];
     global $connect;
+
     $sql = "
         SELECT 
             v.*, 
             u.id_user, 
             u.username, 
-            r.id_video AS film_ditonton,
-            MATCH(v.judul, v.sinopsis, v.genre)
-                AGAINST (? IN NATURAL LANGUAGE MODE) AS skor
+            r.id_video AS film_ditonton
         FROM video v
-        INNER JOIN riwayat r ON v.id = r.id_video
-        INNER JOIN users u ON r.id_user = u.id_user
-        WHERE u.id_user = ?
-        AND MATCH(v.judul, v.sinopsis, v.genre)
-            AGAINST (? IN NATURAL LANGUAGE MODE)
-        ORDER BY skor DESC;
+        INNER JOIN riwayat r 
+            ON v.id = r.id_video AND r.id_user = ?
+        INNER JOIN users u 
+            ON r.id_user = u.id_user
+        WHERE v.judul LIKE ?
+        ORDER BY v.judul ASC;
     ";
+
     $ambil = $connect->prepare($sql);
-    $ambil->bind_param("sis", $keyword, $id_user, $keyword);
+    $like = "%{$keyword}%";
+    $ambil->bind_param("is", $id_user, $like);
+
     $ambil->execute();
     $hasil = $ambil->get_result();
     $ambil->close();
+
     $isi = "";
     if ($hasil->num_rows > 0) {
         while ($row = $hasil->fetch_assoc()) {
