@@ -39,7 +39,7 @@
             $judul = htmlspecialchars($video["judul"]);
             $tanggal = date("d M Y", strtotime($video["tanggal_upload"]));
             $role = htmlspecialchars($video["role"]);
-            // $view = number_format($video["jumlah_view"]);
+            $view = number_format($video["jumlah_view"]);
             // $like = number_format($video["jumlah_perating"]);
             $rating = $video["rating"];
             $file = htmlspecialchars($video["file_video"]);
@@ -53,7 +53,7 @@
                     <td class="text-center">'.$tanggal.'</td>
                     <td class="text-center">'.$role.'</td>
                    
-                    <td class="text-center">'.$rating.'/5</td>
+                    <td class="text-center">'.$view.'/5</td>
                     <td class="text-center">
                         <a href="?adminPage=hapusVideo&video='.$id.'" 
                         class="btn btn-outline-danger" 
