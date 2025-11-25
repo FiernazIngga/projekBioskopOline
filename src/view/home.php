@@ -2,7 +2,7 @@
 
 include __DIR__ . "/../databases/koneksi.php";
 
-$video = $connect->prepare("SELECT id, thumbnail, judul, rating FROM video ORDER BY id DESC LIMIT 4");
+$video = $connect->prepare("SELECT id, thumbnail, judul, rating FROM video ORDER BY id DESC LIMIT 5");
 $video->execute();
 $videos = $video->get_result();
 
@@ -16,7 +16,7 @@ if ($videos->num_rows === 0) {
         $file = htmlspecialchars($dataVideo['thumbnail']);
         $path = 'src/uploads/thumbnail/' . $file;
         $tampilVideo .= '
-            <div class="col-6 col-md-3">
+            <div class="col-6 col-md-2">
                 <a href="route.php?page=detail&id=' . $dataVideo['id'] . '" class="card movie-card" style="text-decoration:none; color:inherit;">
                     <img src="' . $path . '" alt="' . $dataVideo["judul"] . '" />
                     <div class="card-body text-center">
