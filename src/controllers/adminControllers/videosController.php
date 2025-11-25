@@ -53,7 +53,7 @@
                     <td class="text-center">'.$tanggal.'</td>
                     <td class="text-center">'.$role.'</td>
                    
-                    <td class="text-center">'.$view.'/5</td>
+                    <td class="text-center">'.$view.'</td>
                     <td class="text-center">
                         <a href="?adminPage=hapusVideo&video='.$id.'" 
                         class="btn btn-outline-danger" 
