@@ -40,13 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $queryCheck = $connect->prepare("SELECT id_user FROM users WHERE username = ?");
-    $queryCheck->bind_param("s", $username);
+    $queryCheck = $connect->prepare("SELECT id_user FROM users WHERE username = ? OR email = ?");
+    $queryCheck->bind_param("ss", $username, $email);
     $queryCheck->execute();
     $result = $queryCheck->get_result();
 
     if ($result->num_rows > 0) {
-        $_SESSION['error'] = ['Username sudah dipakai, silakan pilih yang lain'];
+        $_SESSION['error'] = ['Username atau email sudah dipakai, silakan pilih yang lain'];
         $_SESSION['success'] = false;
         $queryCheck->close(); 
         $connect->close();    

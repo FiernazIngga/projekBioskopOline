@@ -25,7 +25,7 @@
 
     function ambilSemuaFilm() {
         global $connect, $page;
-        $ambil = $connect->prepare("SELECT id, thumbnail, judul, rating, durasi, role FROM video");
+        $ambil = $connect->prepare("SELECT id, thumbnail, judul, genre, durasi, role FROM video");
         $ambil->execute();
         $cek = $ambil->get_result();
         $tampil = "";
@@ -41,7 +41,7 @@
                         <div class="keterangan">
                             <h2 class="judulImg">'.$hasil["judul"].'</h2>
                             <p>Durasi : '.$hasil["durasi"].'</p>
-                            
+                            <p>Genre : '.$hasil["genre"].'</p>
                             <div class="role '.$hasil["role"].'">'.$hasil["role"].'</div>
                         </div>
                     </a>

@@ -108,8 +108,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $connect->close(); 
     if (isset($_POST['ingat'])) {
         
-        setcookie('username',$username, time()+60,'/');
-        setcookie('password',$password, time()+60,'/');
+        setcookie('username',$username, time()+(60*24),'/');
+        setcookie('password',$password, time()+(60*24),'/');
     }
     header('Location: ?page=dashboardUser');
     

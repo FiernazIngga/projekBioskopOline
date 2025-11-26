@@ -46,7 +46,7 @@ function ambilSemuaFilm() {
                     <div class="keterangan">
                         <h2 class="judulImg">'.$hasil["judul"].'</h2>
                         <p>Durasi : '.$hasil["durasi"].'</p>
-                        <p class="rating">Rating : '.$hasil["rating"].'</p>
+                    
                         <div class="role '.$hasil["role"].'">'.$hasil["role"].'</div>
                     </div>
                 </a>
